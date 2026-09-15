@@ -48,9 +48,9 @@ export const productsData = [
     description: "An airy straight-fit cotton kurti featuring hand-block inspired botanical motifs in soothing emerald and sage hues, finished with delicate wooden buttons.",
     story: "Crafted for effortless daily elegance, this kurti showcases the timeless beauty of artisanal block prints on pure breathable cotton. Ideal for long workdays and relaxed afternoon teas.",
     images: [
-      "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=1200&auto=format&fit=crop",
+      "/kurti_editorial.jpg",
       "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop"
+      "/cotton_blockprint_texture.jpg"
     ],
     featured: true,
     newArrival: true,

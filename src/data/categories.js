@@ -15,7 +15,7 @@ export const clothingCategories = [
     subtitle: "Everyday & Festive Edits",
     slug: "kurtis",
     description: "Versatile, breathable kurtis featuring handcrafted block prints, delicate thread work, and flattering cuts.",
-    image: "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=1000&auto=format&fit=crop",
+    image: "/kurti_editorial.jpg",
     secondaryImage: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
     subcategories: ["Straight Kurtis", "A-Line Kurtis", "Printed Kurtis"]
   },

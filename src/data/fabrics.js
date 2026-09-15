@@ -4,10 +4,11 @@ export const fabricsData = [
     name: "Cotton",
     slug: "cotton",
     tagline: "Natural. Comfortable. Timeless.",
-    heroImage: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/cotton_blockprint_texture.jpg",
+    textureImage: "/cotton_blockprint_texture.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "/cotton_blockprint_texture.jpg",
+      "/artisanal_fabrics_hero.jpg",
       "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1000&auto=format&fit=crop"
     ],
@@ -84,7 +85,7 @@ export const fabricsData = [
     textureImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=800&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1000&auto=format&fit=crop",
+      "/cotton_blockprint_texture.jpg",
       "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1000&auto=format&fit=crop"
     ],
     feel: "Crisp, distinctive natural slub texture, highly absorbent.",
@@ -121,8 +122,8 @@ export const fabricsData = [
     heroImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
     textureImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1000&auto=format&fit=crop",
+      "/cotton_blockprint_texture.jpg",
+      "/artisanal_fabrics_hero.jpg",
       "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1000&auto=format&fit=crop"
     ],
     feel: "Gossamer-fine, whisper-soft, and cloud-like against the skin.",

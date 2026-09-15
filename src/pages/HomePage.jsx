@@ -33,12 +33,12 @@ const heroSlides = [
   },
   {
     id: 3,
-    title: "PURE ARTISANAL TEXTILES",
-    subtitle: "COTTON, SILK, LINEN & MUSLIN",
-    tagline: "Textures That Define Every Creation",
-    description: "Explore the sensory tactile world of India's finest natural yarn weaves.",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1920&auto=format&fit=crop",
-    link: "/fabrics"
+    title: "HANDCRAFTED KURTIS & TEXTILES",
+    subtitle: "EVERYDAY & FESTIVE EDITS",
+    tagline: "Botanical Prints & Pure Weaves",
+    description: "Explore graceful designer kurtis and the tactile world of India's finest natural yarn weaves.",
+    image: "/kurti_editorial.jpg",
+    link: "/clothing/kurtis"
   }
 ];
 
@@ -155,8 +155,8 @@ export default function HomePage() {
             <div className="lg:col-span-5">
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-xl border border-brand-sand">
                 <img
-                  src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1000&auto=format&fit=crop"
-                  alt="Traditional Indian Textile Artisan Handcraft"
+                  src="/cotton_blockprint_texture.jpg"
+                  alt="Authentic Indian Hand-Block Printing Craft"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
               </div>
