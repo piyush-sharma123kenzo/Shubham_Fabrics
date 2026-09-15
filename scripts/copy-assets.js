@@ -3,28 +3,32 @@ import path from 'path';
 
 const filesToCopy = [
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/dupatta_rose_gold_editorial_1789492310988.jpg',
-    dest: 'public/dupatta_rose_gold.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/cotton_printed_fabric_swatch_1789494541303.jpg',
+    dest: 'public/fabric_cotton.jpg'
   },
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/chikankari_ivory_ethnic_set_1789492344921.jpg',
-    dest: 'public/chikankari_ivory_set.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_rayon_swatch_1789494572483.jpg',
+    dest: 'public/fabric_rayon.jpg'
   },
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/anarkali_crimson_editorial_1789492373209.jpg',
-    dest: 'public/anarkali_crimson.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_georgette_swatch_1789494605029.jpg',
+    dest: 'public/fabric_georgette.jpg'
   },
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/sharara_peach_editorial_1789492422546.jpg',
-    dest: 'public/sharara_peach.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_silk_swatch_1789494631492.jpg',
+    dest: 'public/fabric_silk.jpg'
   },
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/coord_linen_oatmeal_editorial_1789492448294.jpg',
-    dest: 'public/coord_linen_oatmeal.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_linen_swatch_1789494659844.jpg',
+    dest: 'public/fabric_linen.jpg'
   },
   {
-    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/traditional_emerald_brocade_1789492475112.jpg',
-    dest: 'public/traditional_emerald_brocade.jpg'
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_crepe_swatch_1789494694952.jpg',
+    dest: 'public/fabric_crepe.jpg'
+  },
+  {
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_muslin_swatch_1789494722518.jpg',
+    dest: 'public/fabric_muslin.jpg'
   }
 ];
 

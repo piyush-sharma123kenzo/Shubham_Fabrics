@@ -4,10 +4,10 @@ export const fabricsData = [
     name: "Cotton",
     slug: "cotton",
     tagline: "Natural. Comfortable. Timeless.",
-    heroImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_cotton.jpg",
+    textureImage: "/fabric_cotton.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
+      "/fabric_cotton.jpg",
       "/cotton_blockprint_texture.jpg",
       "/artisanal_fabrics_hero.jpg"
     ],
@@ -23,11 +23,11 @@ export const fabricsData = [
     name: "Rayon",
     slug: "rayon",
     tagline: "Fluid. Silky. Effortless.",
-    heroImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_rayon.jpg",
+    textureImage: "/fabric_rayon.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop"
+      "/fabric_rayon.jpg",
+      "/sharara_peach.jpg"
     ],
     feel: "Smooth, cool to the touch, semi-lustrous, and ultra-fluid.",
     drape: "Cascading waterfall drape that contours gracefully without stiffness.",
@@ -41,11 +41,12 @@ export const fabricsData = [
     name: "Georgette",
     slug: "georgette",
     tagline: "Sheer. Bouncy. Sculptural.",
-    heroImage: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_georgette.jpg",
+    textureImage: "/fabric_georgette.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop",
-      "/dupatta_rose_gold.jpg"
+      "/fabric_georgette.jpg",
+      "/dupatta_rose_gold.jpg",
+      "/anarkali_crimson.jpg"
     ],
     feel: "Granular, lightweight, airy, and delicately textured.",
     drape: "Flowing, springy drape with ethereal bounce and volume.",
@@ -59,12 +60,12 @@ export const fabricsData = [
     name: "Silk",
     slug: "silk",
     tagline: "Lustrous. Regal. Everlasting.",
-    heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_silk.jpg",
+    textureImage: "/fabric_silk.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+      "/fabric_silk.jpg",
       "/suit_set_editorial.jpg",
-      "/artisanal_fabrics_hero.jpg"
+      "/hero_editorial.jpg"
     ],
     feel: "Rich, supple, shimmering natural protein fiber with regal body.",
     drape: "Architectural yet fluid drape with opulent natural sheen.",
@@ -78,10 +79,10 @@ export const fabricsData = [
     name: "Linen",
     slug: "linen",
     tagline: "Earthy. Textural. Understated.",
-    heroImage: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_linen.jpg",
+    textureImage: "/fabric_linen.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=1200&auto=format&fit=crop",
+      "/fabric_linen.jpg",
       "/coord_linen_oatmeal.jpg"
     ],
     feel: "Crisp, distinctive natural slub texture, highly absorbent.",
@@ -96,10 +97,10 @@ export const fabricsData = [
     name: "Crepe",
     slug: "crepe",
     tagline: "Pebbled. Elegant. Resilient.",
-    heroImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_crepe.jpg",
+    textureImage: "/fabric_crepe.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
+      "/fabric_crepe.jpg",
       "/traditional_emerald_brocade.jpg"
     ],
     feel: "Distinct 3D pebbled surface, wrinkle-resistant and silky.",
@@ -114,10 +115,10 @@ export const fabricsData = [
     name: "Muslin",
     slug: "muslin",
     tagline: "Featherlight. Pure. Heritage.",
-    heroImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=800&auto=format&fit=crop",
+    heroImage: "/fabric_muslin.jpg",
+    textureImage: "/fabric_muslin.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
+      "/fabric_muslin.jpg",
       "/chikankari_ivory_set.jpg"
     ],
     feel: "Gossamer-fine, whisper-soft, and cloud-like against the skin.",
