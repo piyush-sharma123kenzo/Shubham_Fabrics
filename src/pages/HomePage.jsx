@@ -166,17 +166,6 @@ export default function HomePage() {
                   <source src="/suit_salwar_walking.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-
-                {/* Subtle Luxury Film Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-
-                {/* Editorial Video Badge */}
-                <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-brand-dark/85 backdrop-blur-md rounded-sm border border-brand-gold/40 shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] tracking-[0.2em] uppercase font-semibold text-brand-ivory">
-                    Suit Salwar &bull; Editorial Film
-                  </span>
-                </div>
               </div>
             </div>
 
