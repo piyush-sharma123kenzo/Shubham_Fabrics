@@ -19,7 +19,7 @@ const heroSlides = [
     subtitle: "TRADITIONAL TEXTILES — MODERN ELEGANCE",
     tagline: "Fabrics. Fashion. Tradition.",
     description: "Discover handcrafted suit sets, regal anarkalis, and pure woven textiles from the heart of Noida.",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1920&auto=format&fit=crop",
+    image: "/hero_editorial.jpg",
     link: "/clothing"
   },
   {
@@ -77,11 +77,11 @@ export default function HomePage() {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover object-top sm:object-center filter brightness-[0.75]"
+              className="w-full h-full object-cover object-center filter brightness-[0.85]"
             />
             {/* Editorial Multi-layer Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
           </div>
         ))}
 
