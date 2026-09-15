@@ -7,12 +7,11 @@ const RECIPIENT = process.env.RECIPIENT_EMAIL || 'shubhamfabricsindia1@gmail.com
  */
 function createTransporter() {
   const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const port = parseInt(process.env.SMTP_PORT || '587', 10);
-  const user = process.env.SMTP_USER;
+  const user = process.env.SMTP_USER || 'shubhamfabricsindia1@gmail.com';
   const pass = process.env.SMTP_PASS;
 
-  if (!user || !pass || pass === 'your_gmail_app_password_here') {
-    return null; // SMTP credentials not yet provided
+  if (!pass) {
+    return null; // SMTP credentials not yet provided in .env
   }
 
   return nodemailer.createTransport({
