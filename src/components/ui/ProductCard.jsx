@@ -1,49 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 import { useEnquiry } from '../../context/EnquiryContext';
 
 export default function ProductCard({ product, className = '' }) {
-  const [isHovered, setIsHovered] = useState(false);
   const { openEnquiry } = useEnquiry();
 
   if (!product) return null;
 
   const categorySlug = product.category || 'dresses';
   const detailUrl = `/clothing/${categorySlug}/${product.slug}`;
-  const primaryImg = product.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop';
-  const secondaryImg = product.images?.[1] || primaryImg;
+  const primaryImg = product.images?.[0] || '/suit_set_editorial.jpg';
 
   return (
-    <div
-      className={`group flex flex-col bg-transparent ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className={`group flex flex-col bg-transparent ${className}`}>
       {/* Image Container */}
       <div className="relative aspect-[3/4] sm:aspect-[4/5] overflow-hidden bg-brand-cream rounded-sm">
         <Link to={detailUrl} className="block w-full h-full">
-          {/* Main Image */}
+          {/* Main Image (Stable, never swaps) */}
           <img
             src={primaryImg}
             alt={product.name}
             loading="lazy"
-            className={`w-full h-full object-cover object-top transition-all duration-700 ease-out ${
-              isHovered && secondaryImg !== primaryImg ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
-            }`}
+            className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out"
           />
-
-          {/* Secondary Image on Hover */}
-          {secondaryImg !== primaryImg && (
-            <img
-              src={secondaryImg}
-              alt={`${product.name} alternate view`}
-              loading="lazy"
-              className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out ${
-                isHovered ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
-              }`}
-            />
-          )}
         </Link>
 
         {/* Tags / Badges */}
@@ -69,7 +49,7 @@ export default function ProductCard({ product, className = '' }) {
               e.stopPropagation();
               openEnquiry({ item: product.name, type: 'Garment' });
             }}
-            className="w-full py-2.5 px-3 bg-brand-ivory/95 backdrop-blur-md text-brand-charcoal text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-brand-charcoal hover:text-brand-ivory transition-colors flex items-center justify-center gap-2 shadow-md rounded-sm"
+            className="w-full py-2.5 px-3 bg-brand-ivory/95 backdrop-blur-md text-brand-charcoal text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-brand-charcoal hover:text-brand-ivory transition-colors flex items-center justify-center gap-2 shadow-md rounded-sm cursor-pointer"
           >
             <MessageSquare className="w-3.5 h-3.5 text-brand-gold-dark" />
             <span>Enquire About This</span>
