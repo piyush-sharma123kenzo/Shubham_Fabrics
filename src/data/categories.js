@@ -5,8 +5,8 @@ export const clothingCategories = [
     subtitle: "Suit Sets & Ensembles",
     slug: "dresses",
     description: "Graceful flowing silhouettes and regal suit sets tailored for festive and celebratory moments.",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop",
+    image: "/suit_set_editorial.jpg",
+    secondaryImage: "/hero_editorial.jpg",
     subcategories: ["Suit Sets", "Anarkali Gowns", "Floor Length Ensembles"]
   },
   {

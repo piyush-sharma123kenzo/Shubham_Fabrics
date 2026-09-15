@@ -14,8 +14,8 @@ export const productsData = [
     description: "An opulent three-piece festive suit set rendered in luminous silk, adorned with intricate floral threadwork and gilded zari detailing along the neckline and hem.",
     story: "Designed for grand celebrations and festive evenings, this silk suit set embodies regal Indian craftsmanship. The interplay of luminous silk fibers with traditional zari creates a celestial glow, paired with a matching diaphanous dupatta.",
     images: [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop",
+      "/suit_set_editorial.jpg",
+      "/hero_editorial.jpg",
       "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop"
     ],

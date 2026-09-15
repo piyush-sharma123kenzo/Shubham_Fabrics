@@ -19,8 +19,8 @@ const heroSlides = [
     subtitle: "TRADITIONAL TEXTILES — MODERN ELEGANCE",
     tagline: "Fabrics. Fashion. Tradition.",
     description: "Discover handcrafted suit sets, regal anarkalis, and pure woven textiles from the heart of Noida.",
-    image: "/hero_editorial.jpg",
-    link: "/clothing"
+    image: "/suit_set_editorial.jpg",
+    link: "/clothing/dresses"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const heroSlides = [
     subtitle: "FESTIVE & CEREMONIAL EDITS",
     tagline: "Woven Splendour & Intricate Zari",
     description: "Graceful silhouettes tailored with timeless craftsmanship and modern sophistication.",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1920&auto=format&fit=crop",
+    image: "/hero_editorial.jpg",
     link: "/fall-in-love"
   },
   {
