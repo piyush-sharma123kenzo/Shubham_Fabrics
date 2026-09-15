@@ -1,9 +1,14 @@
 export const companyInfo = {
-  name: "SHUBHAM FABRICS",
+  name: "Shubham Fabrics India Pvt Ltd",
+  shortName: "Shubham Fabrics",
   legalName: "SHUBHAM FABRICS INDIA PRIVATE LIMITED",
-  tagline: "Fabrics. Fashion. Tradition.",
+  tagline: "Weaving Quality, Creating Trust",
   subTagline: "Where timeless fabrics meet contemporary expression.",
   gstin: "09ABDCS2090K1Z2",
+  logo: "/logo_icon.png",
+  logoLight: "/logo_icon_light.png",
+  logoFull: "/logo_full.png",
+  logoFullLight: "/logo_full_light.png",
   
   // Principal Address (Primary for contact, navigation, visits)
   principalAddress: {

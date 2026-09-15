@@ -38,18 +38,25 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Brand Logo */}
-            <Link to="/" className="group flex flex-col items-start focus:outline-none">
-              <span className={`font-serif tracking-[0.18em] text-lg sm:text-xl md:text-2xl font-semibold uppercase transition-colors ${
-                isScrolled ? 'text-brand-charcoal group-hover:text-brand-gold-dark' : 'text-brand-ivory group-hover:text-brand-gold-light'
-              }`}>
-                SHUBHAM FABRICS
-              </span>
-              <span className={`text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-light -mt-0.5 transition-colors ${
-                isScrolled ? 'text-brand-muted' : 'text-brand-ivory/80'
-              }`}>
-                Noida &bull; Fabrics &bull; Fashion &bull; Tradition
-              </span>
+            {/* Brand Logo with Official Transparent Emblem */}
+            <Link to="/" className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none">
+              <img
+                src={isScrolled ? "/logo_icon.png" : "/logo_icon_light.png"}
+                alt="Shubham Fabrics India Pvt Ltd Logo"
+                className="h-9 sm:h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+              <div className="flex flex-col text-left">
+                <span className={`font-serif tracking-[0.14em] text-base sm:text-lg md:text-xl font-semibold uppercase leading-tight transition-colors ${
+                  isScrolled ? 'text-brand-charcoal group-hover:text-brand-gold-dark' : 'text-brand-ivory group-hover:text-brand-gold-light'
+                }`}>
+                  Shubham Fabrics
+                </span>
+                <span className={`text-[8.5px] sm:text-[10px] tracking-[0.2em] uppercase font-medium leading-tight mt-0.5 transition-colors ${
+                  isScrolled ? 'text-brand-gold-dark' : 'text-brand-gold-light'
+                }`}>
+                  India Pvt Ltd
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Navigation Links */}

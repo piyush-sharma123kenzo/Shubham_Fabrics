@@ -16,9 +16,9 @@ const heroSlides = [
   {
     id: 1,
     title: "SHUBHAM FABRICS",
-    subtitle: "TRADITIONAL TEXTILES — MODERN ELEGANCE",
-    tagline: "Fabrics. Fashion. Tradition.",
-    description: "Discover handcrafted suit sets, regal anarkalis, and pure woven textiles from the heart of Noida.",
+    subtitle: "INDIA PRIVATE LIMITED",
+    tagline: "Weaving Quality, Creating Trust",
+    description: "Discover handcrafted suit sets, regal anarkalis, and pure luxury textiles curated with master craftsmanship.",
     image: "/suit_set_editorial.jpg",
     link: "/clothing/dresses"
   },

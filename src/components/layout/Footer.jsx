@@ -29,11 +29,23 @@ export default function Footer() {
           
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <div>
-              <span className="font-serif tracking-[0.2em] text-2xl font-bold uppercase block text-brand-ivory">
-                {companyInfo.name}
-              </span>
-              <p className="text-xs tracking-[0.25em] uppercase text-brand-gold-light mt-1">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/logo_icon_light.png"
+                  alt="Shubham Fabrics India Pvt Ltd"
+                  className="h-12 w-auto object-contain"
+                />
+                <div>
+                  <span className="font-serif tracking-[0.14em] text-xl sm:text-2xl font-bold uppercase block text-brand-ivory leading-tight">
+                    Shubham Fabrics
+                  </span>
+                  <span className="text-[10px] tracking-[0.22em] uppercase text-brand-gold-light font-semibold block leading-tight mt-0.5">
+                    India Pvt Ltd
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs tracking-[0.22em] uppercase text-brand-ivory/70 font-light">
                 {companyInfo.tagline}
               </p>
             </div>
