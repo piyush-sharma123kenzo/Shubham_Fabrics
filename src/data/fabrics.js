@@ -4,13 +4,12 @@ export const fabricsData = [
     name: "Cotton",
     slug: "cotton",
     tagline: "Natural. Comfortable. Timeless.",
-    heroImage: "/cotton_blockprint_texture.jpg",
-    textureImage: "/cotton_blockprint_texture.jpg",
+    heroImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
+    textureImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=800&auto=format&fit=crop",
     gallery: [
+      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
       "/cotton_blockprint_texture.jpg",
-      "/artisanal_fabrics_hero.jpg",
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1000&auto=format&fit=crop"
+      "/artisanal_fabrics_hero.jpg"
     ],
     feel: "Soft, breathable, cooling, and skin-friendly natural staple.",
     drape: "Crisp yet gentle drape that softens beautifully with every wash.",
@@ -24,12 +23,11 @@ export const fabricsData = [
     name: "Rayon",
     slug: "rayon",
     tagline: "Fluid. Silky. Effortless.",
-    heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
+    textureImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop"
     ],
     feel: "Smooth, cool to the touch, semi-lustrous, and ultra-fluid.",
     drape: "Cascading waterfall drape that contours gracefully without stiffness.",
@@ -47,8 +45,7 @@ export const fabricsData = [
     textureImage: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=800&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=1000&auto=format&fit=crop"
+      "/dupatta_rose_gold.jpg"
     ],
     feel: "Granular, lightweight, airy, and delicately textured.",
     drape: "Flowing, springy drape with ethereal bounce and volume.",
@@ -62,12 +59,12 @@ export const fabricsData = [
     name: "Silk",
     slug: "silk",
     tagline: "Lustrous. Regal. Everlasting.",
-    heroImage: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+    textureImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+      "/suit_set_editorial.jpg",
+      "/artisanal_fabrics_hero.jpg"
     ],
     feel: "Rich, supple, shimmering natural protein fiber with regal body.",
     drape: "Architectural yet fluid drape with opulent natural sheen.",
@@ -81,12 +78,11 @@ export const fabricsData = [
     name: "Linen",
     slug: "linen",
     tagline: "Earthy. Textural. Understated.",
-    heroImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=1200&auto=format&fit=crop",
+    textureImage: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
-      "/cotton_blockprint_texture.jpg",
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=1200&auto=format&fit=crop",
+      "/coord_linen_oatmeal.jpg"
     ],
     feel: "Crisp, distinctive natural slub texture, highly absorbent.",
     drape: "Structured, refined drape that softens into elegant lived-in folds.",
@@ -100,12 +96,11 @@ export const fabricsData = [
     name: "Crepe",
     slug: "crepe",
     tagline: "Pebbled. Elegant. Resilient.",
-    heroImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
-    textureImage: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
+    textureImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
+      "/traditional_emerald_brocade.jpg"
     ],
     feel: "Distinct 3D pebbled surface, wrinkle-resistant and silky.",
     drape: "Heavy, slinky drape that skims the silhouette effortlessly.",
@@ -122,9 +117,8 @@ export const fabricsData = [
     heroImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
     textureImage: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=800&auto=format&fit=crop",
     gallery: [
-      "/cotton_blockprint_texture.jpg",
-      "/artisanal_fabrics_hero.jpg",
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop",
+      "/chikankari_ivory_set.jpg"
     ],
     feel: "Gossamer-fine, whisper-soft, and cloud-like against the skin.",
     drape: "Delicate, airy floating drape with ethereal softness.",
