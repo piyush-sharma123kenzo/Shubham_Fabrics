@@ -9,22 +9,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS setup
-const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173,http://localhost:3000').split(',');
-
+// CORS setup: Allow localhost, Vercel deployments, and production domains
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl, server-to-server)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.some(allowed => origin.startsWith(allowed.trim()))) {
-      return callback(null, true);
-    }
-    // In development, allow localhost on any port
-    if (process.env.NODE_ENV !== 'production' && origin.includes('localhost')) {
-      return callback(null, true);
-    }
-    return callback(new Error('Not allowed by CORS'));
-  },
+  origin: true,
   credentials: true
 }));
 
