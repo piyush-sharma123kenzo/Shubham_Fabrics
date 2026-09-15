@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#1F1E1D"/>
+  <path d="M50 15 L80 50 L50 85 L20 50 Z" fill="none" stroke="#C5A880" stroke-width="3"/>
+  <path d="M50 28 L70 50 L50 72 L30 50 Z" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="50" y="58" font-family="'Playfair Display', serif" font-size="28" font-weight="bold" fill="#FBF9F5" text-anchor="middle">SF</text>
+</svg>

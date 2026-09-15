@@ -1,0 +1,206 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Search, Menu, X, ArrowRight, MapPin, Mail } from 'lucide-react';
+import { companyInfo } from '../../data/companyInfo';
+import { useEnquiry } from '../../context/EnquiryContext';
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const { openSearch, openEnquiry } = useEnquiry();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  return (
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-brand-ivory/95 backdrop-blur-md shadow-sm border-b border-brand-sand/60 py-3.5'
+            : 'bg-gradient-to-b from-black/40 via-black/20 to-transparent text-brand-ivory py-5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Brand Logo */}
+            <Link to="/" className="group flex flex-col items-start focus:outline-none">
+              <span className={`font-serif tracking-[0.18em] text-lg sm:text-xl md:text-2xl font-semibold uppercase transition-colors ${
+                isScrolled ? 'text-brand-charcoal group-hover:text-brand-gold-dark' : 'text-brand-ivory group-hover:text-brand-gold-light'
+              }`}>
+                SHUBHAM FABRICS
+              </span>
+              <span className={`text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-light -mt-0.5 transition-colors ${
+                isScrolled ? 'text-brand-muted' : 'text-brand-ivory/80'
+              }`}>
+                Noida &bull; Fabrics &bull; Fashion &bull; Tradition
+              </span>
+            </Link>
+
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center space-x-7">
+              {companyInfo.navLinks.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`relative text-xs uppercase tracking-[0.2em] font-medium transition-all py-1.5 ${
+                      isActive
+                        ? isScrolled
+                          ? 'text-brand-gold-dark font-semibold'
+                          : 'text-brand-gold-light font-semibold'
+                        : isScrolled
+                        ? 'text-brand-charcoal/80 hover:text-brand-charcoal'
+                        : 'text-brand-ivory/90 hover:text-brand-ivory'
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-gold transition-all duration-300" />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Utility Actions */}
+            <div className="flex items-center space-x-4 sm:space-x-5">
+              <button
+                type="button"
+                onClick={openSearch}
+                aria-label="Search collections & fabrics"
+                className={`p-2 rounded-full transition-colors ${
+                  isScrolled
+                    ? 'text-brand-charcoal/80 hover:text-brand-charcoal hover:bg-brand-sand/50'
+                    : 'text-brand-ivory hover:text-brand-gold-light hover:bg-white/10'
+                }`}
+              >
+                <Search className="w-5 h-5 stroke-[1.5]" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => openEnquiry({ item: 'General Enquiry' })}
+                className={`hidden sm:inline-flex items-center text-[11px] uppercase tracking-[0.18em] font-medium px-4 py-2 rounded-full border transition-all ${
+                  isScrolled
+                    ? 'border-brand-charcoal/20 text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-ivory'
+                    : 'border-white/40 text-brand-ivory hover:bg-white hover:text-brand-charcoal'
+                }`}
+              >
+                <span>Enquire</span>
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
+                aria-label="Open navigation menu"
+                className={`lg:hidden p-2 rounded-full transition-colors ${
+                  isScrolled ? 'text-brand-charcoal' : 'text-brand-ivory'
+                }`}
+              >
+                <Menu className="w-6 h-6 stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer Menu */}
+      <div
+        className={`fixed inset-0 z-50 transition-opacity duration-300 lg:hidden ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm transition-opacity"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+
+        {/* Drawer Panel */}
+        <div
+          className={`absolute top-0 right-0 w-[85%] max-w-sm h-full bg-brand-ivory shadow-2xl flex flex-col justify-between p-6 sm:p-8 transition-transform duration-500 ease-out ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div>
+            {/* Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-brand-sand">
+              <div className="flex flex-col">
+                <span className="font-serif text-lg tracking-wider font-semibold text-brand-charcoal">
+                  SHUBHAM FABRICS
+                </span>
+                <span className="text-[9px] tracking-widest text-brand-muted uppercase">Digital Showroom</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 text-brand-charcoal hover:text-brand-gold-dark rounded-full"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Links */}
+            <nav className="mt-8 space-y-4">
+              {companyInfo.navLinks.map((item, index) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`group flex items-center justify-between py-2 text-base font-serif tracking-wide border-b border-brand-sand/40 ${
+                      isActive ? 'text-brand-gold-dark font-medium' : 'text-brand-charcoal hover:text-brand-gold-dark'
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all text-brand-gold" />
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Footer Info inside Drawer */}
+          <div className="pt-6 border-t border-brand-sand space-y-3 text-xs text-brand-muted">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openEnquiry({ item: 'General Enquiry' });
+              }}
+              className="w-full py-3 bg-brand-charcoal text-brand-ivory text-xs uppercase tracking-widest font-medium rounded-full hover:bg-brand-gold-dark transition-colors mb-3"
+            >
+              Submit an Enquiry
+            </button>
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-brand-gold shrink-0" />
+              <span>Sector-57, Noida, Uttar Pradesh</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-brand-gold shrink-0" />
+              <span>{companyInfo.email}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
