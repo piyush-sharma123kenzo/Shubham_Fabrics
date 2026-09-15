@@ -54,15 +54,15 @@ export default function AboutUsPage() {
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
               <img
-                src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop"
-                alt="Textile Rolls at Shubham Fabrics"
+                src="/fabric_silk.jpg"
+                alt="Pure Silk Textiles at Shubham Fabrics"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand translate-y-6">
               <img
-                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-                alt="Traditional Dress Craftsmanship"
+                src="/yellow_salwar_suit.jpg"
+                alt="Embroidered Yellow Punjabi Salwar Suit"
                 className="w-full h-full object-cover"
               />
             </div>

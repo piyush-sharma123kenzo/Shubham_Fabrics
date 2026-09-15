@@ -15,8 +15,8 @@ export const productsData = [
     story: "Designed for grand celebrations and festive evenings, this silk suit set embodies regal Indian craftsmanship. The interplay of luminous silk fibers with traditional zari creates a celestial glow, paired with a matching diaphanous dupatta.",
     images: [
       "/suit_set_editorial.jpg",
-      "/hero_editorial.jpg",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop"
+      "/yellow_salwar_suit.jpg",
+      "/suit_salwar_walk_1.jpg"
     ],
     featured: true,
     newArrival: true,
@@ -48,8 +48,8 @@ export const productsData = [
     story: "Crafted for effortless daily elegance, this kurti showcases the timeless beauty of artisanal block prints on pure breathable cotton. Ideal for long workdays and relaxed afternoon teas.",
     images: [
       "/kurti_editorial.jpg",
-      "/cotton_blockprint_texture.jpg",
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop"
+      "/fabric_cotton.jpg",
+      "/cotton_blockprint_texture.jpg"
     ],
     featured: true,
     newArrival: true,
@@ -58,31 +58,31 @@ export const productsData = [
     status: "active",
     details: [
       "Straight silhouette with side slits for ease of movement",
-      "Mandarin collar with functional wooden button placket",
-      "Three-quarter sleeves with contrast piped edging",
-      "Pre-shrunk organic cotton fabric"
+      "Keyhole neck with hand-carved wooden buttons",
+      "Three-quarter sleeves with contrast cuff piping",
+      "Breathable pre-shrunk pure cotton fabric"
     ],
-    careInstructions: "Hand wash separately in cold water with mild detergent. Dry in shade."
+    careInstructions: "Machine wash cold with like colors. Line dry in shade."
   },
 
-  // 3. Georgette Dupatta (New Arrival / Dupattas)
+  // 3. Dupatta (New Arrival / Dupattas)
   {
-    id: "georgette-dupatta-01",
-    name: "Gilded Rose Foil-Print Georgette Dupatta",
-    slug: "gilded-rose-foil-print-georgette-dupatta",
+    id: "dupatta-01",
+    name: "Rose Gold Foil Printed Georgette Dupatta",
+    slug: "rose-gold-foil-printed-georgette-dupatta",
     category: "dupattas",
     categoryName: "Dupattas",
-    subcategory: "Printed Georgette",
-    collection: "New Collection",
+    subcategory: "Printed Dupattas",
+    collection: "Festive Edit",
     fabric: "Georgette",
     fabricSlug: "georgette",
-    fabricDescription: "Lightweight sheer georgette with metallic gold foil stamping and delicate fringe tassels.",
+    fabricDescription: "Featherlight poly-georgette with luminous metallic foil detailing.",
     description: "A dramatic 2.5-meter georgette drape shimmering with rose and gold botanical motifs, framed by handcrafted lace border accents.",
     story: "A statement piece designed to elevate any simple kurta or lehenga. The ethereal weight of pure georgette catches the light with every step, creating a floating silhouette.",
     images: [
       "/dupatta_rose_gold.jpg",
-      "/hero_editorial.jpg",
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop"
+      "/white_violet_dupatta.jpg",
+      "/fabric_georgette.jpg"
     ],
     featured: true,
     newArrival: true,
@@ -114,8 +114,8 @@ export const productsData = [
     story: "A tribute to the subtle elegance of Awadhi craftsmanship. The tone-on-tone embroidery on sheer muslin creates an aura of quiet nobility and timeless grace.",
     images: [
       "/chikankari_ivory_set.jpg",
-      "/suit_set_editorial.jpg",
-      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop"
+      "/yellow_salwar_suit.jpg",
+      "/fabric_muslin.jpg"
     ],
     featured: true,
     newArrival: true,
@@ -147,8 +147,8 @@ export const productsData = [
     story: "Channeling the splendour of Mughal court couture, this flared anarkali floats with dramatic presence. The intricate yoke is balanced by miles of cascading georgette.",
     images: [
       "/anarkali_crimson.jpg",
-      "/hero_editorial.jpg",
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop"
+      "/yellow_salwar_suit.jpg",
+      "/suit_salwar_walk_2.jpg"
     ],
     featured: true,
     newArrival: false,
@@ -180,8 +180,8 @@ export const productsData = [
     story: "Bringing modern playful drama to traditional wedding celebrations, this sharara set pairs fluid movement with celebratory sparkle in a romantic dusty peach palette.",
     images: [
       "/sharara_peach.jpg",
-      "/suit_set_editorial.jpg",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop"
+      "/suit_salwar_walk_3.jpg",
+      "/fabric_rayon.jpg"
     ],
     featured: true,
     newArrival: false,
@@ -214,7 +214,7 @@ export const productsData = [
     images: [
       "/coord_linen_oatmeal.jpg",
       "/kurti_editorial.jpg",
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop"
+      "/fabric_linen.jpg"
     ],
     featured: false,
     newArrival: true,
@@ -246,8 +246,8 @@ export const productsData = [
     story: "Woven in the heartlands of Indian handlooms, this piece carries the legacy of ancient weaving traditions into the wardrobe of the modern connoisseur.",
     images: [
       "/traditional_emerald_brocade.jpg",
-      "/dupatta_rose_gold.jpg",
-      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop"
+      "/yellow_salwar_suit.jpg",
+      "/fabric_crepe.jpg"
     ],
     featured: true,
     newArrival: false,
