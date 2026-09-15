@@ -16,8 +16,7 @@ export const productsData = [
     images: [
       "/suit_set_editorial.jpg",
       "/hero_editorial.jpg",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
     newArrival: true,
@@ -49,8 +48,8 @@ export const productsData = [
     story: "Crafted for effortless daily elegance, this kurti showcases the timeless beauty of artisanal block prints on pure breathable cotton. Ideal for long workdays and relaxed afternoon teas.",
     images: [
       "/kurti_editorial.jpg",
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
-      "/cotton_blockprint_texture.jpg"
+      "/cotton_blockprint_texture.jpg",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
     newArrival: true,
@@ -81,9 +80,9 @@ export const productsData = [
     description: "A dramatic 2.5-meter georgette drape shimmering with rose and gold botanical motifs, framed by handcrafted lace border accents.",
     story: "A statement piece designed to elevate any simple kurta or lehenga. The ethereal weight of pure georgette catches the light with every step, creating a floating silhouette.",
     images: [
-      "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop"
+      "/dupatta_rose_gold.jpg",
+      "/hero_editorial.jpg",
+      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
     newArrival: true,
@@ -114,8 +113,8 @@ export const productsData = [
     description: "A breathtaking ivory ensemble adorned with traditional Chikankari shadow-work, paired with scalloped flared trousers and a featherlight mulmul dupatta.",
     story: "A tribute to the subtle elegance of Awadhi craftsmanship. The tone-on-tone embroidery on sheer muslin creates an aura of quiet nobility and timeless grace.",
     images: [
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
+      "/chikankari_ivory_set.jpg",
+      "/suit_set_editorial.jpg",
       "https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
@@ -147,8 +146,8 @@ export const productsData = [
     description: "A show-stopping 32-kali crimson red anarkali with sweeping floor flare, intricate zardozi bodice, and matching gossamer churidar and dupatta.",
     story: "Channeling the splendour of Mughal court couture, this flared anarkali floats with dramatic presence. The intricate yoke is balanced by miles of cascading georgette.",
     images: [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop",
+      "/anarkali_crimson.jpg",
+      "/hero_editorial.jpg",
       "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
@@ -180,9 +179,9 @@ export const productsData = [
     description: "A chic short peplum kurta detailed with real mirror work and gota ribbons, paired with an ultra-wide tiered sharara bottom.",
     story: "Bringing modern playful drama to traditional wedding celebrations, this sharara set pairs fluid movement with celebratory sparkle in a romantic dusty peach palette.",
     images: [
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop"
+      "/sharara_peach.jpg",
+      "/suit_set_editorial.jpg",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
     newArrival: false,
@@ -213,9 +212,9 @@ export const productsData = [
     description: "A tailored asymmetric tunic paired with straight cropped trousers, celebrating clean architectural lines and pure organic linen texture.",
     story: "Redefining Indian resort and everyday style through quiet luxury. This co-ord set champions breathable natural fibers and immaculate modern tailoring.",
     images: [
-      "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop"
+      "/coord_linen_oatmeal.jpg",
+      "/kurti_editorial.jpg",
+      "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: false,
     newArrival: true,
@@ -246,9 +245,9 @@ export const productsData = [
     description: "A stately emerald green kurta set woven with authentic heritage motifs, accented by handcrafted gold buttons and an organza dupatta.",
     story: "Woven in the heartlands of Indian handlooms, this piece carries the legacy of ancient weaving traditions into the wardrobe of the modern connoisseur.",
     images: [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=1200&auto=format&fit=crop"
+      "/traditional_emerald_brocade.jpg",
+      "/dupatta_rose_gold.jpg",
+      "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop"
     ],
     featured: true,
     newArrival: false,

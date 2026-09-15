@@ -16,7 +16,7 @@ export const clothingCategories = [
     slug: "kurtis",
     description: "Versatile, breathable kurtis featuring handcrafted block prints, delicate thread work, and flattering cuts.",
     image: "/kurti_editorial.jpg",
-    secondaryImage: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
+    secondaryImage: "/cotton_blockprint_texture.jpg",
     subcategories: ["Straight Kurtis", "A-Line Kurtis", "Printed Kurtis"]
   },
   {
@@ -25,8 +25,8 @@ export const clothingCategories = [
     subtitle: "Woven & Embroidered Drapes",
     slug: "dupattas",
     description: "Statement dupattas in georgette, chanderi, and organza with delicate zari borders and floral motifs.",
-    image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
+    image: "/dupatta_rose_gold.jpg",
+    secondaryImage: "/hero_editorial.jpg",
     subcategories: ["Zari Dupattas", "Banarasi Drapes", "Printed Georgette"]
   },
   {
@@ -34,9 +34,9 @@ export const clothingCategories = [
     name: "Co-ord Sets",
     subtitle: "Contemporary Ethnic Harmony",
     slug: "co-ord-sets",
-    description: "Effortless top-and-bottom pairings crafted from breathable cottons and silks for modern understated luxury.",
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop",
+    description: "Effortless top-and-bottom pairings crafted from breathable cottons and linens for modern understated luxury.",
+    image: "/coord_linen_oatmeal.jpg",
+    secondaryImage: "/kurti_editorial.jpg",
     subcategories: ["Tunic & Pant Sets", "Short Kurti Sets", "Lounge Ethnic Co-ords"]
   },
   {
@@ -45,8 +45,8 @@ export const clothingCategories = [
     subtitle: "Complete Classic Edits",
     slug: "ethnic-sets",
     description: "Harmoniously coordinated kurta, pant, and dupatta sets designed with heritage motifs and impeccable tailoring.",
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
+    image: "/chikankari_ivory_set.jpg",
+    secondaryImage: "/suit_set_editorial.jpg",
     subcategories: ["3-Piece Sets", "Straight Cut Sets", "Festive Sets"]
   },
   {
@@ -55,8 +55,8 @@ export const clothingCategories = [
     subtitle: "Royal Flared Silhouettes",
     slug: "anarkali",
     description: "Voluminous royal flares accented with gota patti, delicate embroidery, and regal necklines.",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
+    image: "/anarkali_crimson.jpg",
+    secondaryImage: "/hero_editorial.jpg",
     subcategories: ["Floor Length Anarkalis", "Angrakha Anarkalis", "Tiered Anarkalis"]
   },
   {
@@ -65,8 +65,8 @@ export const clothingCategories = [
     subtitle: "Festive Drama & Flare",
     slug: "sharara-sets",
     description: "Wide-flared tiered shararas matched with embroidered short kurtas for weddings and festive celebrations.",
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop",
+    image: "/sharara_peach.jpg",
+    secondaryImage: "/suit_set_editorial.jpg",
     subcategories: ["Gharara Sets", "Flared Shararas", "Cape Sharara Sets"]
   },
   {
@@ -75,8 +75,8 @@ export const clothingCategories = [
     subtitle: "Heritage & Ceremonial Pieces",
     slug: "traditional-wear",
     description: "Timeless handcrafted ceremonial attire steeped in Indian culture, heritage weaves, and artisanal mastery.",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-    secondaryImage: "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=1000&auto=format&fit=crop",
+    image: "/traditional_emerald_brocade.jpg",
+    secondaryImage: "/dupatta_rose_gold.jpg",
     subcategories: ["Festive Regalia", "Heritage Weaves", "Occasion Wear"]
   }
 ];

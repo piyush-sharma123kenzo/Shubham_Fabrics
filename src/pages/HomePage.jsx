@@ -350,9 +350,9 @@ export default function HomePage() {
         {/* Full-bleed Fashion Photography Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1920&auto=format&fit=crop"
+            src="/anarkali_crimson.jpg"
             alt="Fall in Love Editorial Showcase"
-            className="w-full h-full object-cover object-center filter brightness-[0.4] scale-105"
+            className="w-full h-full object-cover object-top filter brightness-[0.4] scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
         </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
             <div className="lg:col-span-4">
               <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
                 <img
-                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop"
+                  src="/artisanal_fabrics_hero.jpg"
                   alt="Shubham Fabrics Rolls and Bolts"
                   className="w-full h-full object-cover"
                 />
@@ -448,7 +448,7 @@ export default function HomePage() {
             <div className="lg:col-span-4">
               <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
                 <img
-                  src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+                  src="/sharara_peach.jpg"
                   alt="Graceful Traditional Women's Fashion"
                   className="w-full h-full object-cover object-top"
                 />
