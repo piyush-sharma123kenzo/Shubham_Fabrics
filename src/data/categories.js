@@ -4,10 +4,10 @@ export const clothingCategories = [
     name: "Dresses",
     subtitle: "Suit Sets & Ensembles",
     slug: "dresses",
-    description: "Graceful flowing silhouettes and regal suit sets tailored for festive and celebratory moments.",
+    description: "Graceful handcrafted suit sets, Punjabi salwar suits, and silk festive ensembles curated for timeless elegance.",
     image: "/suit_set_editorial.jpg",
-    secondaryImage: "/hero_editorial.jpg",
-    subcategories: ["Suit Sets", "Anarkali Gowns", "Floor Length Ensembles"]
+    secondaryImage: "/suit_wine_velvet.jpg",
+    subcategories: ["Suit Sets", "Punjabi Salwar Suits", "Silk Ensembles"]
   },
   {
     id: "kurtis",

@@ -1,9 +1,9 @@
 export const productsData = [
-  // 1. Silk Suit Set (Featured Hero / New Arrival / Best Seller / Dresses)
+  // 1. Silk Suit Set (Featured Hero / Dresses / Suit Sets)
   {
     id: "silk-suit-set-01",
-    name: "Royal Zari Embroidered Silk Suit Set",
-    slug: "royal-zari-embroidered-silk-suit-set",
+    name: "Ivory & Gold Zari Handcrafted Silk Suit Set",
+    slug: "ivory-gold-zari-handcrafted-silk-suit-set",
     category: "dresses",
     categoryName: "Dresses",
     subcategory: "Suit Sets",
@@ -11,12 +11,12 @@ export const productsData = [
     fabric: "Silk",
     fabricSlug: "silk",
     fabricDescription: "Pure mulberry blend silk with subtle metallic sheen and soft cotton lining for all-day comfort.",
-    description: "An opulent three-piece festive suit set rendered in luminous silk, adorned with intricate floral threadwork and gilded zari detailing along the neckline and hem.",
+    description: "An opulent three-piece festive suit set rendered in luminous ivory silk, adorned with intricate floral threadwork and gilded zari detailing along the neckline and hem.",
     story: "Designed for grand celebrations and festive evenings, this silk suit set embodies regal Indian craftsmanship. The interplay of luminous silk fibers with traditional zari creates a celestial glow, paired with a matching diaphanous dupatta.",
     images: [
       "/suit_set_editorial.jpg",
-      "/yellow_salwar_suit.jpg",
-      "/suit_salwar_walk_1.jpg"
+      "/suit_salwar_walk_2.jpg",
+      "/fabric_silk.jpg"
     ],
     featured: true,
     newArrival: true,
@@ -30,6 +30,138 @@ export const productsData = [
       "Full sleeves with scalloped embroidered cuffs"
     ],
     careInstructions: "Dry clean only. Store in a muslin cloth bag away from direct sunlight."
+  },
+
+  // 1b. Plum Wine Velvet Punjabi Suit Set (Dresses / Suit Sets)
+  {
+    id: "velvet-punjabi-suit-02",
+    name: "Plum Wine Velvet Embroidered Punjabi Salwar Suit",
+    slug: "plum-wine-velvet-embroidered-punjabi-salwar-suit",
+    category: "dresses",
+    categoryName: "Dresses",
+    subcategory: "Punjabi Salwar Suits",
+    collection: "Royal Velvet Edit",
+    fabric: "Silk",
+    fabricSlug: "silk",
+    fabricDescription: "Micro-plush heavy silk velvet kurta with lustrous satin-crepe salwar.",
+    description: "A majestic deep plum velvet suit featuring heritage zardozi and antique tilla neckline embroidery, paired with a fluid mauve satin salwar and embroidered sheer dupatta.",
+    story: "Evoking the royal grandeur of historic North Indian courts, this velvet suit set provides regal warmth and dramatic elegance for winter weddings and evening celebrations.",
+    images: [
+      "/suit_wine_velvet.jpg",
+      "/suit_salwar_walk_2.jpg",
+      "/fabric_silk.jpg"
+    ],
+    featured: true,
+    newArrival: true,
+    bestSeller: true,
+    fallInLove: true,
+    status: "active",
+    details: [
+      "Rich micro-velvet short kurta with antique gold zari work",
+      "Full flare pleated Punjabi salwar in mauve satin",
+      "Sheer organza dupatta with four-sided heavy embroidered border",
+      "Handcrafted metal button detailing on placket"
+    ],
+    careInstructions: "Professional dry clean only."
+  },
+
+  // 1c. Botanical Block-Printed Cotton Salwar Suit (Dresses / Suit Sets)
+  {
+    id: "cotton-printed-suit-03",
+    name: "Botanical Hand-Block Printed Cotton Salwar Suit",
+    slug: "botanical-hand-block-printed-cotton-salwar-suit",
+    category: "dresses",
+    categoryName: "Dresses",
+    subcategory: "Suit Sets",
+    collection: "Everyday Artisanal",
+    fabric: "Cotton",
+    fabricSlug: "cotton",
+    fabricDescription: "100% fine combed breathable cotton with natural vegetable dyes.",
+    description: "An effortless daily wear cotton salwar suit in ivory with turquoise botanical vines, paired with a matching printed pleated salwar and a contrast border dupatta.",
+    story: "Crafted for pure comfort and understated beauty, this suit set celebrates traditional hand-block printing on featherlight organic cotton.",
+    images: [
+      "/suit_cotton_printed.jpg",
+      "/fabric_cotton.jpg",
+      "/cotton_blockprint_texture.jpg"
+    ],
+    featured: true,
+    newArrival: true,
+    bestSeller: false,
+    fallInLove: false,
+    status: "active",
+    details: [
+      "Straight V-neck kurta with subtle contrast piping",
+      "All-over printed traditional Punjabi pleated salwar",
+      "Matching 2.5m soft cotton printed dupatta with turquoise border",
+      "100% breathable organic natural cotton"
+    ],
+    careInstructions: "Gentle machine wash cold with mild detergent. Dry in shade."
+  },
+
+  // 1d. Mustard Yellow Mirror-Work Patiala Salwar Suit (Dresses / Suit Sets)
+  {
+    id: "mustard-yellow-suit-04",
+    name: "Mustard Yellow Mirror-Work Patiala Salwar Suit",
+    slug: "mustard-yellow-mirror-work-patiala-salwar-suit",
+    category: "dresses",
+    categoryName: "Dresses",
+    subcategory: "Punjabi Salwar Suits",
+    collection: "Festive Collection",
+    fabric: "Silk",
+    fabricSlug: "silk",
+    fabricDescription: "Chanderi silk blend with shimmering mirror-work embroidery and rich drape.",
+    description: "A vibrant sunshine mustard yellow suit salwar with dense mirror embellishments and gotta patti, paired with a pleated patiala salwar and tasseled dupatta.",
+    story: "A showstopping festive look celebrating Punjabi vibrancy and joy. The intricate mirror motifs reflect ambient light with joyous sparkle.",
+    images: [
+      "/yellow_salwar_suit.jpg",
+      "/suit_set_editorial.jpg",
+      "/fabric_silk.jpg"
+    ],
+    featured: true,
+    newArrival: true,
+    bestSeller: true,
+    fallInLove: true,
+    status: "active",
+    details: [
+      "Heavy mirror-work and gold thread embroidery on kurta yoke and border",
+      "Full volume gathered patiala salwar with embroidered cuffs",
+      "Coordinated yellow dupatta with mirror booti and border",
+      "Premium soft lining included"
+    ],
+    careInstructions: "Dry clean only to protect delicate mirror work."
+  },
+
+  // 1e. Royal Blue & Gold Zari Punjabi Salwar Suit (Dresses / Suit Sets)
+  {
+    id: "royal-blue-zari-suit-05",
+    name: "Royal Blue & Gold Zari Silk Salwar Suit",
+    slug: "royal-blue-gold-zari-silk-salwar-suit",
+    category: "dresses",
+    categoryName: "Dresses",
+    subcategory: "Silk Ensembles",
+    collection: "Ceremonial Edit",
+    fabric: "Silk",
+    fabricSlug: "silk",
+    fabricDescription: "Luminous raw silk with heavy tilla embroidery and soft sheen.",
+    description: "A majestic royal blue Punjabi suit set with intricate gold bullion embroidery along the hemline, neck, and sleeves, finished with a diaphanous silk dupatta.",
+    story: "Commanding attention with deep jewel tones and royal heritage cuts, this piece is tailor-made for grand family weddings and festive celebrations.",
+    images: [
+      "/suit_salwar_walk_1.jpg",
+      "/suit_salwar_walk_2.jpg",
+      "/suit_salwar_walk_3.jpg"
+    ],
+    featured: true,
+    newArrival: true,
+    bestSeller: true,
+    fallInLove: true,
+    status: "active",
+    details: [
+      "Traditional Punjabi straight silhouette with deep side slits",
+      "Ornate golden zari yoke and hem border",
+      "Pleated salwar with embroidered bottom cuff detailing",
+      "Airy royal blue dupatta with gold lace edge"
+    ],
+    careInstructions: "Dry clean only."
   },
 
   // 2. Printed Kurti (New Arrival / Kurtis)
