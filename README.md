@@ -1,56 +1,77 @@
-# Shubham_Fabrics
+# Shubham Fabrics India Pvt Ltd — Web Application
 
-# SHUBHAM FABRICS INDIA PRIVATE LIMITED
-**Premium Textile & Traditional Women's Fashion Portfolio Website & Digital Showroom**
-
-## 🏛️ Brand & Legal Overview
-- **Legal Entity**: SHUBHAM FABRICS INDIA PRIVATE LIMITED
-- **GSTIN**: `09ABDCS2090K1Z2`
-- **Principal Business Address**: C-22/27, Sector-57, Noida, Gautam Buddha Nagar, Uttar Pradesh - 201301
-- **Additional Business Address**: C 22/30, Sector-57, Noida, Gautam Buddha Nagar, Uttar Pradesh - 201301
-- **Enquiry Email**: `shubhamfabricsindia1@gmail.com`
-- **Policy**: Digital showroom and company portfolio. Non-e-commerce platform with dedicated enquiry workflows.
+Official digital showroom and web platform for **SHUBHAM FABRICS INDIA PRIVATE LIMITED**.
 
 ---
 
-## ✨ Features & Architecture
-- **Editorial Design System**: Tailored luxury palette (Warm Ivory, Soft Cream, Sand, Deep Charcoal, Champagne Gold) with `Playfair Display`, `Cormorant Garamond`, and `Plus Jakarta Sans`.
-- **Clothing Silhouettes (8 Categories)**: Dresses & Suit Sets, Kurtis, Dupattas, Co-ord Sets, Ethnic Sets, Anarkalis, Sharara Sets, and Traditional Wear.
-- **Pure Textiles Archive (7 Fabrics)**: Cotton, Rayon, Georgette, Silk, Linen, Crepe, and Muslin with macro weave zoom.
-- **Garment & Fabric Detail Pages**: High-resolution image galleries, fullscreen Lightbox, craftsmanship specifications, care guidelines, and two-way Fabric $\leftrightarrow$ Clothing connections.
-- **Interactive Showroom Map**: Integrated OpenStreetMap/Leaflet centered on Noida Sector-57 with custom pin marker and one-click Google Maps navigation directions.
-- **Enquiry System**: Modal and page forms with live validation, honeypot anti-spam protection, celebration effects, and direct dispatch to `shubhamfabricsindia1@gmail.com`.
-- **Global Search**: Instant search overlay across all clothing pieces, fabrics, and categories.
+## Architecture Overview
 
----
+The repository is structured into two clean, self-contained directories:
 
-## 🛠️ Technology Stack
-- **Framework**: React 18 (Vite SPA)
-- **Styling**: Tailwind CSS & Vanilla CSS Design Tokens
-- **Routing**: React Router DOM v6
-- **Icons**: Lucide React
-- **Mapping**: Leaflet / OpenStreetMap
-- **Effects**: Canvas Confetti
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18 or newer)
-- npm
-
-### Installation & Local Development
-```bash
-# Install dependencies
-npm install
-
-# Start local development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
+d:\Shubham_Fabrics\
+├── frontend/                     # React 18 + Vite SPA client
+│   ├── public/                   # Media assets, swatches, videos, logos
+│   ├── src/                      # UI components, pages, context, data, styles
+│   ├── index.html                # Main entry HTML
+│   ├── vite.config.js            # Vite bundler configuration
+│   ├── tailwind.config.js        # Design tokens & color system
+│   └── package.json              # Frontend dependencies
+│
+├── backend/                      # Node.js + Express API server
+│   ├── src/
+│   │   ├── routes/
+│   │   │   └── enquiryRoutes.js  # POST /api/enquiry, GET /api/health
+│   │   ├── services/
+│   │   │   └── emailService.js   # Nodemailer email dispatcher
+│   │   └── server.js             # Express app setup & CORS configuration
+│   ├── .env.example              # Environment variables template
+│   └── package.json              # Backend dependencies
+│
+├── package.json                  # Root workspace runner
+└── README.md
+```
+
+---
+
+## Quick Start Guide
+
+### 1. Run Both Frontend & Backend (Recommended)
+From the project root:
+```bash
+npm run dev
+```
+- **Frontend**: `http://localhost:5173`
+- **Backend API**: `http://localhost:5000`
+
+---
+
+### 2. Run Independently
+
+#### Frontend Only
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Build for production:
+```bash
+npm run build
+```
+
+#### Backend Only
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+---
+
+## Enquiry & Email Dispatch System
+
+- **Recipient Inbox**: `shubhamfabricsindia1@gmail.com`
+- When a customer submits an inquiry on the website:
+  1. The frontend attempts `http://localhost:5000/api/enquiry`.
+  2. The backend records and dispatches the inquiry notification to `shubhamfabricsindia1@gmail.com`.
+  3. If the backend is ever offline, the frontend automatically falls back to `formsubmit.co` and direct `mailto:` client opening.
