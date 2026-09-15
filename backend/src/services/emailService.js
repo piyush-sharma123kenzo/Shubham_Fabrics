@@ -23,6 +23,99 @@ function createTransporter() {
 }
 
 /**
+ * Dispatch 6-digit OTP Verification Email to Customer
+ */
+export async function sendOtpEmail(recipientEmail, customerName, otpCode) {
+  const transporter = createTransporter();
+  const subject = `Your Shubham Fabrics Verification Code: ${otpCode}`;
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #FAF8F5; margin: 0; padding: 20px; color: #1F1E1D; }
+          .container { max-width: 540px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E4D5C3; border-radius: 4px; overflow: hidden; text-align: center; }
+          .header { background: #1F1E1D; color: #FAF8F5; padding: 26px 20px; border-bottom: 3px solid #C5A880; }
+          .header h1 { margin: 0; font-size: 20px; letter-spacing: 2.5px; font-weight: 500; }
+          .header p { margin: 6px 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #EADBC8; }
+          .content { padding: 36px 28px; }
+          .greeting { font-size: 16px; color: #1F1E1D; margin-bottom: 12px; }
+          .otp-box { background: #FAF8F5; border: 2px dashed #C5A880; border-radius: 6px; padding: 18px 24px; margin: 24px auto; display: inline-block; }
+          .otp-code { font-size: 36px; font-family: monospace; letter-spacing: 8px; font-weight: 700; color: #A65D4E; margin: 0; }
+          .instruction { font-size: 13px; color: #66625C; line-height: 1.6; margin-top: 18px; }
+          .footer { background: #F4EFE6; padding: 16px; font-size: 11px; color: #8F8B84; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>SHUBHAM FABRICS</h1>
+            <p>Digital Showroom Verification</p>
+          </div>
+          <div class="content">
+            <div class="greeting">Hello <strong>${customerName || 'Valued Guest'}</strong>,</div>
+            <p style="color: #66625C; font-size: 14px; margin: 0;">
+              Please use the one-time verification code below to verify your email address and submit your showroom enquiry.
+            </p>
+            <div class="otp-box">
+              <div class="otp-code">${otpCode}</div>
+            </div>
+            <p class="instruction">
+              This code is valid for <strong>10 minutes</strong>. Please do not share this code with anyone.
+            </p>
+          </div>
+          <div class="footer">
+            Shubham Fabrics India Pvt Ltd &bull; Sector-57, Noida
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const textContent = `
+SHUBHAM FABRICS - EMAIL VERIFICATION
+====================================
+Hello ${customerName || 'Valued Guest'},
+
+Your One-Time Verification Code is: ${otpCode}
+
+Please enter this code on the website to verify your enquiry. This code is valid for 10 minutes.
+====================================
+Shubham Fabrics India Pvt Ltd
+  `.trim();
+
+  if (!transporter) {
+    console.log(`\n=============================================`);
+    console.log(`🔑 [OTP VERIFICATION CODE GENERATED]`);
+    console.log(`📧 Recipient: ${recipientEmail}`);
+    console.log(`🔢 Code:      ${otpCode}`);
+    console.log(`=============================================\n`);
+    return {
+      sent: true,
+      mode: 'logged',
+      message: `OTP generated for ${recipientEmail}`
+    };
+  }
+
+  const info = await transporter.sendMail({
+    from: `"Shubham Fabrics" <${process.env.SMTP_USER}>`,
+    to: recipientEmail,
+    subject,
+    text: textContent,
+    html: htmlContent
+  });
+
+  console.log(`[BACKEND OTP EMAIL] Sent verification code to ${recipientEmail}, ID: ${info.messageId}`);
+  return {
+    sent: true,
+    messageId: info.messageId,
+    mode: 'smtp'
+  };
+}
+
+/**
  * Dispatch enquiry notification email
  */
 export async function sendEnquiryNotification(data) {

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import enquiryRoutes from './routes/enquiryRoutes.js';
+import otpRoutes from './routes/otpRoutes.js';
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Mount Routes
+app.use('/api/otp', otpRoutes);
 app.use('/api/enquiry', enquiryRoutes);
 
 // 404 handler

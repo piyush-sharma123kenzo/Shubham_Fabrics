@@ -1,15 +1,16 @@
 import express from 'express';
 import { sendEnquiryNotification } from '../services/emailService.js';
+import { verifiedTokens } from './otpRoutes.js';
 
 const router = express.Router();
 
 /**
  * POST /api/enquiry
- * Handle website showroom enquiry submissions
+ * Handle website showroom enquiry submissions with verified OTP
  */
 router.post('/', async (req, res) => {
   try {
-    const { name, phone, email, message, interestItem, interestType, websiteUrl_hp } = req.body;
+    const { name, phone, email, message, interestItem, interestType, verifiedToken, websiteUrl_hp } = req.body;
 
     // Honeypot spam trap
     if (websiteUrl_hp && websiteUrl_hp.trim() !== '') {
@@ -24,20 +25,36 @@ router.post('/', async (req, res) => {
       });
     }
 
+    const normalizedEmail = email.trim().toLowerCase();
+
+    // Verify OTP token if provided
+    let isEmailVerified = false;
+    if (verifiedToken && verifiedTokens.has(verifiedToken)) {
+      const record = verifiedTokens.get(verifiedToken);
+      if (record.email === normalizedEmail && Date.now() <= record.expiresAt) {
+        isEmailVerified = true;
+        // Invalidate token after single use
+        verifiedTokens.delete(verifiedToken);
+      }
+    }
+
     const payload = {
       customerName: name.trim(),
       phone: phone.trim(),
-      email: email.trim(),
+      email: normalizedEmail,
       message: message.trim(),
       interestItem: interestItem || 'General Showroom Inquiry',
-      interestType: interestType || 'General'
+      interestType: interestType || 'General',
+      isVerified: isEmailVerified,
+      verificationBadge: isEmailVerified ? '✅ VERIFIED CUSTOMER (OTP Confirmed)' : 'Unverified'
     };
 
     const dispatchResult = await sendEnquiryNotification(payload);
 
     return res.status(200).json({
       success: true,
-      message: 'Your enquiry has been received and forwarded to shubhamfabricsindia1@gmail.com.',
+      isVerified: isEmailVerified,
+      message: 'Your enquiry has been verified and delivered to shubhamfabricsindia1@gmail.com.',
       dispatchResult
     });
   } catch (error) {

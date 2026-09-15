@@ -68,10 +68,12 @@ npm run dev
 
 ---
 
-## Enquiry & Email Dispatch System
+## Enquiry & OTP Verification System
 
-- **Recipient Inbox**: `shubhamfabricsindia1@gmail.com`
-- When a customer submits an inquiry on the website:
-  1. The frontend attempts `http://localhost:5000/api/enquiry`.
-  2. The backend records and dispatches the inquiry notification to `shubhamfabricsindia1@gmail.com`.
-  3. If the backend is ever offline, the frontend automatically falls back to `formsubmit.co` and direct `mailto:` client opening.
+- **Official Recipient Inbox**: `shubhamfabricsindia1@gmail.com`
+- **Customer Verification Flow**:
+  1. A customer enters their Name, Phone, Email, and requirements.
+  2. The website generates a secure 6-digit verification code (OTP) and emails it to the customer.
+  3. The customer enters the 6-digit code on the website to confirm their identity.
+  4. Once confirmed, the inquiry is verified and dispatched directly to `shubhamfabricsindia1@gmail.com` with a verified customer badge.
+  5. The customer can also click **"Open in Gmail / Mail App"** to send a direct copy from their personal email client.
