@@ -350,11 +350,11 @@ export default function HomePage() {
         {/* Full-bleed Fashion Photography Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/anarkali_crimson.jpg"
-            alt="Fall in Love Editorial Showcase"
-            className="w-full h-full object-cover object-top filter brightness-[0.4] scale-105"
+            src="/white_violet_dupatta.jpg"
+            alt="Fall in Love Editorial - Premium White and Violet Dupatta"
+            className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.05]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-brand-dark/20" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

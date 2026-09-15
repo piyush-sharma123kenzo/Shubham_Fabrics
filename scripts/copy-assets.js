@@ -29,6 +29,10 @@ const filesToCopy = [
   {
     src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/fabric_muslin_swatch_1789494722518.jpg',
     dest: 'public/fabric_muslin.jpg'
+  },
+  {
+    src: 'C:/Users/piyus/.gemini/antigravity-ide/brain/b788c9f1-f01e-43ba-9697-7110c70e1285/white_violet_dupatta_banner_1789495019791.jpg',
+    dest: 'public/white_violet_dupatta.jpg'
   }
 ];
 

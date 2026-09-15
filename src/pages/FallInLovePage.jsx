@@ -20,11 +20,11 @@ export default function FallInLovePage() {
       {/* Signature Full-bleed Cinematic Hero */}
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1920&auto=format&fit=crop"
-          alt="Fall in Love Editorial Showcase"
-          className="absolute inset-0 w-full h-full object-cover filter brightness-[0.45] scale-105"
+          src="/white_violet_dupatta.jpg"
+          alt="Fall in Love Editorial - Premium White and Violet Dupatta"
+          className="absolute inset-0 w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-brand-dark/30" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6">
           <span className="text-xs uppercase tracking-[0.35em] font-semibold text-brand-gold-light animate-fade-in block">
