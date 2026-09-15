@@ -1,0 +1,7 @@
+file 'D:/Shubham_Fabrics/public/suit_salwar_walk_1.jpg'
+duration 3
+file 'D:/Shubham_Fabrics/public/suit_salwar_walk_2.jpg'
+duration 3
+file 'D:/Shubham_Fabrics/public/suit_salwar_walk_3.jpg'
+duration 3
+file 'D:/Shubham_Fabrics/public/suit_salwar_walk_1.jpg'

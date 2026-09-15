@@ -151,7 +151,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Left Media: Suit Sets Editorial Fashion Film */}
+            {/* Left Media: Suit Salwar Editorial Fashion Film */}
             <div className="lg:col-span-5">
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border border-brand-sand/80 bg-brand-charcoal group">
                 <video
@@ -160,10 +160,10 @@ export default function HomePage() {
                   muted
                   playsInline
                   preload="auto"
-                  poster="/suit_set_editorial.jpg"
-                  className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-1000"
+                  poster="/suit_salwar_walk_1.jpg"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                 >
-                  <source src="/suit_set_walking.mp4" type="video/mp4" />
+                  <source src="/suit_salwar_walking.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
 
@@ -171,10 +171,10 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
                 {/* Editorial Video Badge */}
-                <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-brand-dark/80 backdrop-blur-md rounded-sm border border-brand-gold/40">
+                <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-brand-dark/85 backdrop-blur-md rounded-sm border border-brand-gold/40 shadow-lg">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[10px] tracking-[0.2em] uppercase font-semibold text-brand-ivory">
-                    Silhouettes in Motion
+                    Suit Salwar &bull; Editorial Film
                   </span>
                 </div>
               </div>
