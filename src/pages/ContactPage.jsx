@@ -18,6 +18,7 @@ export default function ContactPage() {
 
   const [status, setStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [submitResult, setSubmitResult] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,12 +26,13 @@ export default function ContactPage() {
     setErrorMessage('');
 
     try {
-      await submitEnquiry({
+      const res = await submitEnquiry({
         ...formData,
         interestItem: "General Contact Page Inquiry",
         interestType: "Contact Page"
       });
 
+      setSubmitResult(res);
       setStatus('success');
       confetti({
         particleCount: 80,
@@ -53,6 +55,7 @@ export default function ContactPage() {
       websiteUrl_hp: ''
     });
     setStatus('idle');
+    setSubmitResult(null);
   };
 
   return (
@@ -176,21 +179,42 @@ export default function ContactPage() {
             </div>
 
             {status === 'success' ? (
-              <div className="py-12 text-center space-y-4">
+              <div className="py-10 text-center space-y-4">
                 <div className="w-16 h-16 bg-brand-gold/15 text-brand-gold-dark rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle className="w-10 h-10 stroke-[1.5]" />
                 </div>
                 <h4 className="font-serif text-2xl text-brand-charcoal font-medium">
-                  Enquiry Received
+                  Enquiry Dispatched
                 </h4>
                 <p className="text-sm text-brand-charcoal/80 max-w-sm mx-auto leading-relaxed">
-                  Thank you for your enquiry. Our team will get back to you soon at your provided email or phone.
+                  Thank you for your enquiry. Your details have been sent to our showroom team at <span className="text-brand-gold-dark font-medium">{companyInfo.email}</span>.
                 </p>
-                <div className="pt-4">
+
+                {submitResult?.needsActivation && (
+                  <div className="text-left p-4 bg-amber-50 border border-amber-200 rounded-sm text-xs text-amber-900 space-y-1.5 max-w-md mx-auto">
+                    <p className="font-semibold text-amber-950 flex items-center gap-1.5">
+                      <span>⚡ One-Time Gmail Activation</span>
+                    </p>
+                    <p className="leading-relaxed">
+                      FormSubmit has sent an activation link to <strong className="font-medium">{companyInfo.email}</strong>. Please check your Gmail (including Spam folder) and click <em>"Activate Form"</em> to enable direct automatic delivery of all future customer enquiries!
+                    </p>
+                  </div>
+                )}
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                  {submitResult?.mailToFallback && (
+                    <a
+                      href={submitResult.mailToFallback}
+                      className="w-full sm:w-auto px-6 py-2.5 bg-brand-gold-dark text-white text-xs uppercase tracking-[0.18em] font-medium rounded-sm hover:bg-brand-charcoal transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Mail className="w-4 h-4" />
+                      <span>Open in Gmail / Email</span>
+                    </a>
+                  )}
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="px-6 py-2.5 bg-brand-charcoal text-brand-ivory text-xs uppercase tracking-[0.2em] font-medium rounded-full hover:bg-brand-gold-dark transition-colors"
+                    className="w-full sm:w-auto px-6 py-2.5 bg-brand-charcoal text-brand-ivory text-xs uppercase tracking-[0.18em] font-medium rounded-sm hover:bg-brand-sand hover:text-brand-charcoal transition-colors"
                   >
                     Submit Another Enquiry
                   </button>

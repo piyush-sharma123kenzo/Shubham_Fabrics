@@ -18,6 +18,7 @@ export default function EnquiryModal() {
 
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [errorMessage, setErrorMessage] = useState('');
+  const [submitResult, setSubmitResult] = useState(null);
 
   // Sync enquiry context when opened
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function EnquiryModal() {
       }));
       setStatus('idle');
       setErrorMessage('');
+      setSubmitResult(null);
     }
   }, [isEnquiryOpen, enquiryContext]);
 
@@ -50,12 +52,13 @@ export default function EnquiryModal() {
     setErrorMessage('');
 
     try {
-      await submitEnquiry({
+      const res = await submitEnquiry({
         ...formData,
         interestItem: enquiryContext.item,
         interestType: enquiryContext.type
       });
 
+      setSubmitResult(res);
       setStatus('success');
       confetti({
         particleCount: 70,
@@ -78,6 +81,7 @@ export default function EnquiryModal() {
       websiteUrl_hp: ''
     });
     setStatus('idle');
+    setSubmitResult(null);
     closeEnquiry();
   };
 
@@ -112,7 +116,7 @@ export default function EnquiryModal() {
         {/* Modal Body */}
         <div className="p-6 sm:p-8">
           {status === 'success' ? (
-            <div className="text-center py-8 space-y-4">
+            <div className="text-center py-6 space-y-4">
               <div className="w-16 h-16 bg-brand-gold/15 text-brand-gold-dark rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle className="w-10 h-10 stroke-[1.5]" />
               </div>
@@ -122,14 +126,32 @@ export default function EnquiryModal() {
               <p className="text-sm text-brand-charcoal/80 max-w-sm mx-auto leading-relaxed">
                 Your request regarding <strong className="font-medium">{enquiryContext.item || 'our collections'}</strong> has been forwarded to our showroom team at <span className="text-brand-gold-dark font-medium">{companyInfo.email}</span>.
               </p>
-              <p className="text-xs text-brand-muted">
-                Our representative will reach out to you within 24 business hours.
-              </p>
-              <div className="pt-4">
+
+              {submitResult?.needsActivation && (
+                <div className="text-left p-3.5 bg-amber-50 border border-amber-200 rounded-sm text-xs text-amber-900 space-y-1">
+                  <p className="font-semibold text-amber-950 flex items-center gap-1.5">
+                    <span>⚡ One-Time Gmail Activation</span>
+                  </p>
+                  <p className="leading-relaxed">
+                    FormSubmit sent an activation email to <strong className="font-medium">{companyInfo.email}</strong>. Please check your Gmail (including Spam folder) and click <em>"Activate Form"</em> to start receiving instant forward notifications!
+                  </p>
+                </div>
+              )}
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 pt-2">
+                {submitResult?.mailToFallback && (
+                  <a
+                    href={submitResult.mailToFallback}
+                    className="w-full sm:w-auto px-5 py-2.5 bg-brand-gold-dark text-white text-xs uppercase tracking-[0.18em] font-medium rounded-sm hover:bg-brand-charcoal transition-colors flex items-center justify-center gap-2"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Open in Gmail / Email</span>
+                  </a>
+                )}
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-2.5 bg-brand-charcoal text-brand-ivory text-xs uppercase tracking-[0.2em] font-medium rounded-full hover:bg-brand-gold-dark transition-colors"
+                  className="w-full sm:w-auto px-5 py-2.5 bg-brand-charcoal text-brand-ivory text-xs uppercase tracking-[0.18em] font-medium rounded-sm hover:bg-brand-sand hover:text-brand-charcoal transition-colors"
                 >
                   Return to Showroom
                 </button>

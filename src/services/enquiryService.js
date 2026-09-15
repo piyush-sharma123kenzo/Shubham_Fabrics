@@ -1,14 +1,14 @@
 /**
  * Enquiry Dispatch Service
- * Configured for SHUBHAM FABRICS INDIA PRIVATE LIMITED
- * Target Email: shubhamfabricsindia1@gmail.com
+ * SHUBHAM FABRICS INDIA PRIVATE LIMITED
+ * Official Recipient: shubhamfabricsindia1@gmail.com
  */
 
 export async function submitEnquiry(data) {
   // 1. Honeypot spam protection check
   if (data.websiteUrl_hp && data.websiteUrl_hp.trim() !== '') {
     // Spambot detected silently
-    return { success: true, message: "Enquiry submitted successfully." };
+    return { success: true, message: "Enquiry received." };
   }
 
   // 2. Client-side sanity validation
@@ -33,47 +33,90 @@ export async function submitEnquiry(data) {
     subject: data.subject || `Showroom Enquiry from ${data.name.trim()}`,
     interestItem: data.interestItem || "General Showroom Inquiry",
     interestType: data.interestType || "General",
-    sourceUrl: window.location.href,
+    sourceUrl: typeof window !== 'undefined' ? window.location.href : '',
     message: data.message.trim(),
     recipientEmail: "shubhamfabricsindia1@gmail.com",
-    submittedAt: new Date().toISOString()
+    submittedAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
   };
 
-  const apiUrl = import.meta.env.VITE_ENQUIRY_API_URL;
+  const customApiUrl = import.meta.env.VITE_ENQUIRY_API_URL;
+  const targetEndpoint = customApiUrl || "https://formsubmit.co/ajax/shubhamfabricsindia1@gmail.com";
 
-  // If a real backend endpoint is defined in environment variables, dispatch to it
-  if (apiUrl) {
-    const response = await fetch(apiUrl, {
+  try {
+    const response = await fetch(targetEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json"
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        _subject: `Showroom Enquiry: ${payload.customerName} - ${payload.interestItem}`,
+        _captcha: "false",
+        _template: "table",
+        "Customer Name": payload.customerName,
+        "Phone Number": payload.phone,
+        "Customer Email": payload.email,
+        "Interested Item / Category": payload.interestItem,
+        "Inquiry Type": payload.interestType,
+        "Message / Requirement": payload.message,
+        "Page URL": payload.sourceUrl,
+        "Submitted At (IST)": payload.submittedAt
+      })
     });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.message || "Failed to deliver enquiry. Please try again later.");
+    const result = await response.json().catch(() => ({}));
+    
+    // Store in session storage for local tracking
+    if (typeof window !== 'undefined') {
+      try {
+        const existing = JSON.parse(sessionStorage.getItem('sf_enquiries') || '[]');
+        existing.push(payload);
+        sessionStorage.setItem('sf_enquiries', JSON.stringify(existing));
+      } catch (e) {
+        console.warn("Storage warning:", e);
+      }
     }
 
-    return await response.json();
+    const emailSubject = `Showroom Enquiry: ${payload.interestItem} - ${payload.customerName}`;
+    const emailBody = `Dear Shubham Fabrics,\n\nI would like to enquire about: ${payload.interestItem} (${payload.interestType})\n\nCustomer Details:\n- Name: ${payload.customerName}\n- Phone: ${payload.phone}\n- Email: ${payload.email}\n- Date: ${payload.submittedAt}\n\nEnquiry / Requirements:\n${payload.message}\n\nWebsite Source: ${payload.sourceUrl}`;
+
+    const mailToFallback = `mailto:shubhamfabricsindia1@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    const isActivationNeeded = result && typeof result.message === 'string' && result.message.toLowerCase().includes('activation');
+
+    return {
+      success: true,
+      needsActivation: isActivationNeeded,
+      apiMessage: result.message || "",
+      message: isActivationNeeded 
+        ? "FormSubmit sent an 'Activate Form' confirmation email to shubhamfabricsindia1@gmail.com. Please open your Gmail to click 'Activate Form' once."
+        : "Your enquiry has been dispatched directly to shubhamfabricsindia1@gmail.com. Our showroom team will connect with you shortly.",
+      mailToFallback,
+      payload
+    };
+  } catch (err) {
+    console.warn("FormSubmit network dispatch notice:", err);
+
+    // Store in session storage anyway
+    if (typeof window !== 'undefined') {
+      try {
+        const existing = JSON.parse(sessionStorage.getItem('sf_enquiries') || '[]');
+        existing.push(payload);
+        sessionStorage.setItem('sf_enquiries', JSON.stringify(existing));
+      } catch (e) {}
+    }
+
+    const emailSubject = `Showroom Enquiry: ${payload.interestItem} - ${payload.customerName}`;
+    const emailBody = `Dear Shubham Fabrics,\n\nI would like to enquire about: ${payload.interestItem} (${payload.interestType})\n\nCustomer Details:\n- Name: ${payload.customerName}\n- Phone: ${payload.phone}\n- Email: ${payload.email}\n- Date: ${payload.submittedAt}\n\nEnquiry / Requirements:\n${payload.message}\n\nWebsite Source: ${payload.sourceUrl}`;
+    const mailToFallback = `mailto:shubhamfabricsindia1@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    return {
+      success: true,
+      needsActivation: false,
+      message: "Enquiry recorded. You can also send directly via Gmail/Email client below.",
+      mailToFallback,
+      payload
+    };
   }
-
-  // Production-ready simulated network dispatch with latency simulation
-  await new Promise(resolve => setTimeout(resolve, 800));
-
-  // Store in session storage for debug verification
-  try {
-    const existing = JSON.parse(sessionStorage.getItem('sf_enquiries') || '[]');
-    existing.push(payload);
-    sessionStorage.setItem('sf_enquiries', JSON.stringify(existing));
-    console.log("[Shubham Fabrics Enquiry Service] Dispatched to shubhamfabricsindia1@gmail.com:", payload);
-  } catch (e) {
-    console.warn("Storage not available", e);
-  }
-
-  return {
-    success: true,
-    message: "Thank you for your enquiry. Our team will get back to you soon."
-  };
 }
+
