@@ -105,16 +105,6 @@ export default function AboutUsPage() {
                   </div>
                 </div>
 
-                {/* Heritage Seal / Medallion */}
-                <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-dark text-brand-gold border-2 border-brand-gold/60 shadow-xl flex flex-col items-center justify-center text-center p-1 transform rotate-[-6deg] group-hover:rotate-0 transition-transform duration-500">
-                  <Sparkles className="w-3.5 h-3.5 text-brand-gold-light mb-0.5" />
-                  <span className="text-[7.5px] uppercase tracking-widest font-semibold text-brand-ivory leading-none">
-                    ESTD
-                  </span>
-                  <span className="text-[9px] font-serif text-brand-gold-light font-bold">
-                    2005
-                  </span>
-                </div>
               </div>
 
             </div>
