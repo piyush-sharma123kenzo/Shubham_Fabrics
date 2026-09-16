@@ -51,20 +51,72 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
-              <img
-                src="/fabric_silk.jpg"
-                alt="Pure Silk Textiles at Shubham Fabrics"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand translate-y-6 bg-brand-cream">
-              <img
-                src="/yellow_salwar_suit.jpg"
-                alt="Embroidered Yellow Punjabi Salwar Suit"
-                className="w-full h-full object-cover object-top"
-              />
+          {/* Right Media: Architectural Heritage Arches */}
+          <div className="lg:col-span-6 relative">
+            {/* Background Decorative Ambient Glow */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-brand-gold/15 via-brand-sand/25 to-transparent rounded-3xl blur-2xl -z-10 pointer-events-none" />
+
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 items-end">
+              
+              {/* Arch 1: Raw Pure Textile */}
+              <div className="relative group">
+                <div className="p-2 sm:p-2.5 rounded-t-[90px] sm:rounded-t-[130px] rounded-b-sm border border-brand-gold/40 bg-white/70 shadow-lg backdrop-blur-xs transition-transform duration-500 group-hover:-translate-y-1">
+                  <div className="aspect-[3/4] sm:aspect-[4/5] rounded-t-[80px] sm:rounded-t-[120px] rounded-b-xs overflow-hidden bg-brand-cream relative shadow-inner">
+                    <img
+                      src="/fabric_silk.jpg"
+                      alt="Pure Silk Textiles at Shubham Fabrics"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    
+                    {/* Bottom Inset Label */}
+                    <div className="absolute bottom-3 sm:bottom-4 inset-x-2 sm:inset-x-3 text-center text-brand-ivory">
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-medium text-brand-gold-light block">
+                        Tactile Origin
+                      </span>
+                      <p className="font-serif text-xs sm:text-sm font-light text-brand-ivory truncate mt-0.5">
+                        Pure Chanderi Silk
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arch 2: Atelier Silhouettes (Staggered Arch) */}
+              <div className="relative group sm:-translate-y-6">
+                <div className="p-2 sm:p-2.5 rounded-t-[90px] sm:rounded-t-[130px] rounded-b-sm border border-brand-gold/50 bg-white/80 shadow-xl backdrop-blur-xs transition-transform duration-500 group-hover:-translate-y-1">
+                  <div className="aspect-[3/4] sm:aspect-[4/5] rounded-t-[80px] sm:rounded-t-[120px] rounded-b-xs overflow-hidden bg-brand-cream relative shadow-inner">
+                    <img
+                      src="/yellow_salwar_suit.jpg"
+                      alt="Embroidered Yellow Punjabi Salwar Suit"
+                      className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    
+                    {/* Bottom Inset Label */}
+                    <div className="absolute bottom-3 sm:bottom-4 inset-x-2 sm:inset-x-3 text-center text-brand-ivory">
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-medium text-brand-gold-light block">
+                        Showroom Atelier
+                      </span>
+                      <p className="font-serif text-xs sm:text-sm font-light text-brand-ivory truncate mt-0.5">
+                        Heritage Salwar Suit
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Heritage Seal / Medallion */}
+                <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-dark text-brand-gold border-2 border-brand-gold/60 shadow-xl flex flex-col items-center justify-center text-center p-1 transform rotate-[-6deg] group-hover:rotate-0 transition-transform duration-500">
+                  <Sparkles className="w-3.5 h-3.5 text-brand-gold-light mb-0.5" />
+                  <span className="text-[7.5px] uppercase tracking-widest font-semibold text-brand-ivory leading-none">
+                    ESTD
+                  </span>
+                  <span className="text-[9px] font-serif text-brand-gold-light font-bold">
+                    2005
+                  </span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
