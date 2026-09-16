@@ -226,12 +226,12 @@ export default function ClothingDetailPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="aspect-[16/10] sm:aspect-[16/9] rounded-sm overflow-hidden shadow-xl border border-brand-sand">
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="w-full max-w-md aspect-[3/4] sm:aspect-[4/5] rounded-sm overflow-hidden shadow-xl border border-brand-sand bg-brand-cream">
                 <img
                   src={images[1] || images[0]}
                   alt={`${product.name} craftsmanship story`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>

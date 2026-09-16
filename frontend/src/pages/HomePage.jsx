@@ -153,7 +153,7 @@ export default function HomePage() {
             
             {/* Left Media: Suit Salwar Editorial Fashion Film */}
             <div className="lg:col-span-5">
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border border-brand-sand/80 bg-brand-charcoal group">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] max-w-md mx-auto rounded-sm overflow-hidden shadow-2xl border border-brand-sand/80 bg-brand-charcoal group">
                 <video
                   autoPlay
                   loop
@@ -161,7 +161,7 @@ export default function HomePage() {
                   playsInline
                   preload="auto"
                   poster="/suit_salwar_walk_1.jpg"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
+                  className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-1000"
                 >
                   <source src="/suit_salwar_walking.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
@@ -359,7 +359,7 @@ export default function HomePage() {
           <img
             src="/white_violet_dupatta.jpg"
             alt="Fall in Love Editorial - Premium White and Violet Dupatta"
-            className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.05]"
+            className="w-full h-full object-cover object-top filter brightness-[0.75] contrast-[1.05]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-brand-dark/20" />
         </div>
@@ -420,11 +420,11 @@ export default function HomePage() {
             
             {/* Left Fabric Bolts Imagery */}
             <div className="lg:col-span-4">
-              <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
+              <div className="aspect-[3/4] sm:aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand bg-brand-cream">
                 <img
                   src="/artisanal_fabrics_hero.jpg"
                   alt="Shubham Fabrics Rolls and Bolts"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>
@@ -453,7 +453,7 @@ export default function HomePage() {
 
             {/* Right Fashion Photography */}
             <div className="lg:col-span-4">
-              <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-lg border border-brand-sand">
+              <div className="aspect-[3/4] sm:aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand bg-brand-cream">
                 <img
                   src="/sharara_peach.jpg"
                   alt="Graceful Traditional Women's Fashion"

@@ -58,11 +58,11 @@ export default function ClothingCategoryPage() {
           </div>
 
           {currentCategory.image && (
-            <div className="w-full md:w-64 aspect-[4/3] rounded-sm overflow-hidden shadow-md shrink-0">
+            <div className="w-full md:w-56 aspect-[3/4] sm:aspect-[4/5] rounded-sm overflow-hidden shadow-md shrink-0 bg-brand-cream">
               <img
                 src={currentCategory.image}
                 alt={currentCategory.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           )}

@@ -59,11 +59,11 @@ export default function AboutUsPage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand translate-y-6">
+            <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-lg border border-brand-sand translate-y-6 bg-brand-cream">
               <img
                 src="/yellow_salwar_suit.jpg"
                 alt="Embroidered Yellow Punjabi Salwar Suit"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>

@@ -70,18 +70,18 @@ export default function FallInLovePage() {
           </div>
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl">
+            <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl bg-brand-cream">
               <img
                 src="/yellow_salwar_suit.jpg"
                 alt="Yellow Embroidered Salwar Suit"
-                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl sm:translate-y-8">
+            <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl sm:translate-y-8 bg-brand-cream">
               <img
                 src="/chikankari_ivory_set.jpg"
                 alt="Ivory Chikankari Ethnic Set"
-                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
