@@ -92,13 +92,14 @@ export default function Navbar() {
                 type="button"
                 onClick={openSearch}
                 aria-label="Search collections & fabrics"
-                className={`p-2 rounded-full transition-colors ${
+                className={`flex items-center gap-2 px-2.5 py-1.5 rounded-full transition-colors ${
                   isScrolled
                     ? 'text-brand-charcoal/80 hover:text-brand-charcoal hover:bg-brand-sand/50'
                     : 'text-brand-ivory hover:text-brand-gold-light hover:bg-white/10'
                 }`}
               >
-                <Search className="w-5 h-5 stroke-[1.5]" />
+                <Search className="w-4 h-4 stroke-[1.5]" />
+                <span className="text-[11px] uppercase tracking-[0.18em] font-medium">Search</span>
               </button>
 
               <button
@@ -110,7 +111,7 @@ export default function Navbar() {
                     : 'border-white/40 text-brand-ivory hover:bg-white hover:text-brand-charcoal'
                 }`}
               >
-                <span>Enquire</span>
+                <span>Enquiry</span>
               </button>
 
               {/* Mobile Menu Button */}

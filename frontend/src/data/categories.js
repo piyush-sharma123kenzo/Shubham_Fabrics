@@ -17,7 +17,7 @@ export const clothingCategories = [
     description: "Versatile, breathable kurtis featuring handcrafted block prints, delicate thread work, and flattering cuts.",
     image: "/kurti_editorial.jpg",
     secondaryImage: "/cotton_blockprint_texture.jpg",
-    subcategories: ["Straight Kurtis", "A-Line Kurtis", "Printed Kurtis"]
+    subcategories: ["Straight Kurtis", "A-Line Kurtis", "Linen Kurtis", "Printed Kurtis"]
   },
   {
     id: "dupattas",

@@ -4,15 +4,13 @@ import { sendOtpEmail } from '../services/emailService.js';
 
 const router = express.Router();
 
-// In-memory store for OTPs (email -> { code, expiresAt, attempts })
+// Active OTP store (email -> { code, expiresAt, attempts })
 const activeOtps = new Map();
 
-// In-memory store for verified tokens (token -> { email, expiresAt })
+// Verified tokens store (token -> { email, expiresAt })
 export const verifiedTokens = new Map();
 
-/**
- * Clean up expired records every 5 minutes
- */
+// Periodic cleanup of expired records every 5 minutes
 setInterval(() => {
   const now = Date.now();
   for (const [email, record] of activeOtps.entries()) {
@@ -25,7 +23,7 @@ setInterval(() => {
 
 /**
  * POST /api/otp/send
- * Request 6-digit verification code sent to customer email
+ * Generate & dispatch 6-digit OTP via Google App Password
  */
 router.post('/send', async (req, res) => {
   try {
@@ -40,7 +38,7 @@ router.post('/send', async (req, res) => {
 
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Check rate limit: 1 OTP per 30 seconds per email
+    // Rate limit: 1 OTP per 30 seconds per email
     const existing = activeOtps.get(normalizedEmail);
     if (existing && existing.createdAt && (Date.now() - existing.createdAt < 30 * 1000)) {
       const waitSec = Math.ceil((30 * 1000 - (Date.now() - existing.createdAt)) / 1000);
@@ -50,7 +48,7 @@ router.post('/send', async (req, res) => {
       });
     }
 
-    // Generate random 6-digit code
+    // Generate random 6-digit OTP code
     const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
     const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
 
@@ -61,11 +59,12 @@ router.post('/send', async (req, res) => {
       attempts: 0
     });
 
-    await sendOtpEmail(normalizedEmail, name || 'Guest', otpCode);
+    const dispatchResult = await sendOtpEmail(normalizedEmail, name || 'Guest', otpCode);
 
     return res.status(200).json({
       success: true,
-      message: `Verification code sent to ${normalizedEmail}. Please check your inbox or spam folder.`
+      message: `Verification code sent to ${normalizedEmail}. Please check your inbox or spam folder.`,
+      dispatchResult
     });
   } catch (error) {
     console.error('Error sending OTP:', error);
@@ -79,7 +78,7 @@ router.post('/send', async (req, res) => {
 
 /**
  * POST /api/otp/verify
- * Validate 6-digit verification code entered by customer
+ * Validate 6-digit OTP code
  */
 router.post('/verify', async (req, res) => {
   try {
@@ -88,7 +87,7 @@ router.post('/verify', async (req, res) => {
     if (!email || !otp) {
       return res.status(400).json({
         success: false,
-        message: 'Email address and 6-digit verification code are required.'
+        message: 'Email and 6-digit verification code are required.'
       });
     }
 
@@ -100,7 +99,7 @@ router.post('/verify', async (req, res) => {
     if (!record) {
       return res.status(400).json({
         success: false,
-        message: 'No verification code found for this email. Please request a new code.'
+        message: 'No active code found for this email. Please request a new code.'
       });
     }
 
@@ -116,7 +115,7 @@ router.post('/verify', async (req, res) => {
       activeOtps.delete(normalizedEmail);
       return res.status(429).json({
         success: false,
-        message: 'Too many incorrect attempts. Please request a fresh code.'
+        message: 'Too many incorrect attempts. Please request a new code.'
       });
     }
 
@@ -124,17 +123,17 @@ router.post('/verify', async (req, res) => {
       record.attempts += 1;
       return res.status(400).json({
         success: false,
-        message: `Incorrect verification code. ${5 - record.attempts} attempts remaining.`
+        message: `Incorrect code. ${5 - record.attempts} attempt(s) remaining.`
       });
     }
 
-    // Success: Consume OTP and create verified session token
+    // Success: Consume OTP and create verified session token valid for 30 minutes
     activeOtps.delete(normalizedEmail);
     const verifiedToken = crypto.randomBytes(24).toString('hex');
     verifiedTokens.set(verifiedToken, {
       email: normalizedEmail,
       verifiedAt: Date.now(),
-      expiresAt: Date.now() + 30 * 60 * 1000 // Valid for 30 minutes to submit form
+      expiresAt: Date.now() + 30 * 60 * 1000
     });
 
     return res.status(200).json({

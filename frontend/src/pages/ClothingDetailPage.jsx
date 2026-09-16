@@ -3,9 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Sparkles, MessageSquare, Maximize2, ShieldCheck, Check, Layers, ChevronRight } from 'lucide-react';
 import SEO from '../components/ui/SEO';
 import Lightbox from '../components/ui/Lightbox';
-import ProductCard from '../components/ui/ProductCard';
 import { productsData } from '../data/products';
-import { fabricsData } from '../data/fabrics';
 import { useEnquiry } from '../context/EnquiryContext';
 
 export default function ClothingDetailPage() {
@@ -16,13 +14,14 @@ export default function ClothingDetailPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const fabricObj = fabricsData.find(f => f.slug === product.fabricSlug || f.name.toLowerCase() === product.fabric.toLowerCase());
-
-  const relatedProducts = productsData
-    .filter(p => p.id !== product.id && (p.category === product.category || p.fabric === product.fabric))
-    .slice(0, 4);
-
-  const images = product.images || [];
+  const rawImages = product.images || [];
+  // Only display actual garment photos in the gallery, filter out any fabric weave/texture images
+  const images = rawImages.filter(
+    img => !img.toLowerCase().includes('fabric_') && !img.toLowerCase().includes('texture')
+  );
+  if (images.length === 0 && rawImages.length > 0) {
+    images.push(rawImages[0]);
+  }
 
   return (
     <div className="pt-28 pb-24 bg-brand-ivory min-h-screen">
@@ -128,30 +127,24 @@ export default function ClothingDetailPage() {
               </h1>
             </div>
 
-            {/* Fabric Link Box */}
-            <div className="p-4 bg-brand-cream border border-brand-sand rounded-sm flex items-center justify-between">
+            {/* Garment Textile Note */}
+            <div className="p-3.5 bg-brand-cream border border-brand-sand rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-sand/70 text-brand-gold-dark flex items-center justify-center font-serif text-sm font-semibold">
-                  {product.fabric?.[0] || 'F'}
+                <div className="w-9 h-9 rounded-full bg-brand-sand/70 text-brand-gold-dark flex items-center justify-center font-serif text-sm font-semibold">
+                  {product.fabric?.[0] || 'C'}
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wider text-brand-muted">
-                    Primary Textile
+                    Crafted In
                   </p>
-                  <p className="font-serif text-base text-brand-charcoal font-medium">
+                  <p className="font-serif text-sm sm:text-base text-brand-charcoal font-medium">
                     Pure {product.fabric}
                   </p>
                 </div>
               </div>
-
-              {fabricObj && (
-                <Link
-                  to={`/fabrics/${fabricObj.slug}`}
-                  className="text-xs uppercase tracking-wider text-brand-gold-dark hover:underline font-semibold"
-                >
-                  Explore Fabric &rarr;
-                </Link>
-              )}
+              <span className="text-[11px] uppercase tracking-wider text-brand-gold-dark font-medium">
+                Artisanal Weave
+              </span>
             </div>
 
             {/* Description */}
@@ -208,8 +201,8 @@ export default function ClothingDetailPage() {
 
         </div>
 
-        {/* 2. THE STORY SECTION (Editorial Layout matching PRD) */}
-        <section className="my-24 pt-16 border-t border-brand-sand">
+        {/* 2. THE STORY SECTION (Editorial Layout) */}
+        <section className="my-20 pt-16 border-t border-brand-sand">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-6 space-y-4">
@@ -227,7 +220,7 @@ export default function ClothingDetailPage() {
                   onClick={() => openEnquiry({ item: product.name, type: 'Garment Story' })}
                   className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-gold-dark hover:text-brand-charcoal inline-flex items-center gap-1.5 transition-colors"
                 >
-                  <span>Request Bespoke Swatch</span>
+                  <span>Enquire About Custom Sizing</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -246,63 +239,7 @@ export default function ClothingDetailPage() {
           </div>
         </section>
 
-        {/* 3. THE FABRIC SECTION (Matching PRD) */}
-        {fabricObj && (
-          <section className="my-20 p-8 sm:p-12 bg-brand-cream/80 border border-brand-sand rounded-sm">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-4">
-                <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-md">
-                  <img
-                    src={fabricObj.textureImage}
-                    alt={`${fabricObj.name} macro weave`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
 
-              <div className="md:col-span-8 space-y-3">
-                <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-brand-gold-dark">
-                  THE FABRIC &bull; {fabricObj.name.toUpperCase()}
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl text-brand-charcoal font-normal">
-                  {fabricObj.tagline}
-                </h3>
-                <p className="text-xs sm:text-sm text-brand-charcoal/80 leading-relaxed font-light">
-                  {product.fabricDescription || fabricObj.description}
-                </p>
-                <div className="pt-2">
-                  <Link
-                    to={`/fabrics/${fabricObj.slug}`}
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-brand-charcoal hover:text-brand-gold-dark transition-colors"
-                  >
-                    <span>View {fabricObj.name} Textile Deep-Dive</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-brand-gold-dark" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 4. YOU MAY ALSO LIKE (Related Pieces) */}
-        {relatedProducts.length > 0 && (
-          <div className="pt-16 border-t border-brand-sand">
-            <div className="text-center mb-12">
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold text-brand-gold-dark block mb-2">
-                CURATED COMPLEMENTS
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-serif text-brand-charcoal font-normal">
-                You May Also Like
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              {relatedProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          </div>
-        )}
 
       </div>
     </div>

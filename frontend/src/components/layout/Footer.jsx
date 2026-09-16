@@ -93,7 +93,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-brand-ivory/75">
               <li>
                 <Link to="/fall-in-love" className="hover:text-brand-gold-light transition-colors">
-                  Fall in Love Edit
+                  Fall in Love
                 </Link>
               </li>
               <li>

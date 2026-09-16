@@ -6,7 +6,7 @@ const router = express.Router();
 
 /**
  * POST /api/enquiry
- * Handle website showroom enquiry submissions with verified OTP
+ * Receive showroom enquiry and dispatch email to shubhamfabricsindia1@gmail.com
  */
 router.post('/', async (req, res) => {
   try {
@@ -17,11 +17,11 @@ router.post('/', async (req, res) => {
       return res.status(200).json({ success: true, message: 'Enquiry received.' });
     }
 
-    // Validation
+    // Required fields check
     if (!name || !phone || !email || !message) {
       return res.status(400).json({
         success: false,
-        message: 'Please complete all required fields (name, phone, email, message).'
+        message: 'Please fill in all required fields (Name, Phone, Email, Message).'
       });
     }
 
@@ -33,8 +33,7 @@ router.post('/', async (req, res) => {
       const record = verifiedTokens.get(verifiedToken);
       if (record.email === normalizedEmail && Date.now() <= record.expiresAt) {
         isEmailVerified = true;
-        // Invalidate token after single use
-        verifiedTokens.delete(verifiedToken);
+        verifiedTokens.delete(verifiedToken); // Single-use consumption
       }
     }
 
@@ -44,9 +43,8 @@ router.post('/', async (req, res) => {
       email: normalizedEmail,
       message: message.trim(),
       interestItem: interestItem || 'General Showroom Inquiry',
-      interestType: interestType || 'General',
-      isVerified: isEmailVerified,
-      verificationBadge: isEmailVerified ? '✅ VERIFIED CUSTOMER (OTP Confirmed)' : 'Unverified'
+      interestType: interestType || 'Showroom',
+      isVerified: isEmailVerified
     };
 
     const dispatchResult = await sendEnquiryNotification(payload);
@@ -54,14 +52,14 @@ router.post('/', async (req, res) => {
     return res.status(200).json({
       success: true,
       isVerified: isEmailVerified,
-      message: 'Your enquiry has been verified and delivered to shubhamfabricsindia1@gmail.com.',
+      message: 'Your enquiry has been delivered directly to Shubham Fabrics (shubhamfabricsindia1@gmail.com).',
       dispatchResult
     });
   } catch (error) {
     console.error('Error handling enquiry submission:', error);
     return res.status(500).json({
       success: false,
-      message: 'Failed to process enquiry. Please try again later or contact us directly via email.',
+      message: 'Failed to process enquiry. Please try again or contact us directly at shubhamfabricsindia1@gmail.com.',
       error: error.message
     });
   }
