@@ -71,7 +71,7 @@ export default function SearchModal() {
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search suit sets, anarkalis, kurtis, silks, cottons..."
+            placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full text-base sm:text-lg bg-transparent border-none focus:outline-none text-brand-charcoal placeholder:text-brand-muted/70"
@@ -93,26 +93,9 @@ export default function SearchModal() {
           </button>
         </div>
 
-        {/* Search Results / Suggestions */}
-        <div className="overflow-y-auto p-4 sm:p-6 flex-grow space-y-6">
-          {!query && (
-            <div className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-muted">
-                Popular Searches
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Silk Suit Set', 'Cotton Kurti', 'Georgette Dupatta', 'Anarkali', 'Pure Linen', 'Chikankari'].map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag)}
-                    className="px-3 py-1.5 text-xs bg-brand-cream hover:bg-brand-sand/60 text-brand-charcoal rounded-full transition-colors border border-brand-sand"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+        {/* Search Results */}
+        {normalizedQuery && (
+          <div className="overflow-y-auto p-4 sm:p-6 flex-grow space-y-6">
 
           {query && totalResults === 0 && (
             <div className="py-12 text-center text-brand-muted">
@@ -213,7 +196,8 @@ export default function SearchModal() {
             </div>
           )}
         </div>
-      </div>
+      )}
     </div>
+  </div>
   );
 }
