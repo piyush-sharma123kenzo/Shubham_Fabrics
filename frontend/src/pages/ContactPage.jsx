@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Mail, Phone, Clock, Send, ShieldCheck, CheckCircle, AlertCircle, Loader2, Navigation, KeyRound, ArrowRight, RotateCcw } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Mail, Phone, Clock, Send, ShieldCheck, CheckCircle, AlertCircle, Loader2, Navigation } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import SEO from '../components/ui/SEO';
 import SectionHeader from '../components/ui/SectionHeader';
 import LeafletMap from '../components/ui/LeafletMap';
 import { companyInfo } from '../data/companyInfo';
-import { sendEmailOtp, verifyEmailOtp, submitEnquiry } from '../services/enquiryService';
+import { submitEnquiry } from '../services/enquiryService';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -16,21 +16,12 @@ export default function ContactPage() {
     websiteUrl_hp: ''
   });
 
-  const [otp, setOtp] = useState('');
-  const [step, setStep] = useState('form'); // 'form' | 'otp' | 'success'
+  const [step, setStep] = useState('form'); // 'form' | 'success'
   const [status, setStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [resendTimer, setResendTimer] = useState(0);
   const [submitResult, setSubmitResult] = useState(null);
 
-  useEffect(() => {
-    if (resendTimer > 0) {
-      const timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [resendTimer]);
-
-  const handleRequestOtp = async (e) => {
+  const handleSubmitEnquiry = async (e) => {
     e.preventDefault();
     setStatus('loading');
     setErrorMessage('');
@@ -40,48 +31,11 @@ export default function ContactPage() {
         throw new Error("Please complete all required fields.");
       }
 
-      await sendEmailOtp(formData.email, formData.name);
-      setStep('otp');
-      setStatus('idle');
-      setResendTimer(30);
-    } catch (err) {
-      setStatus('error');
-      setErrorMessage(err.message || "Failed to send verification code. Please check your email.");
-    }
-  };
-
-  const handleResendOtp = async () => {
-    if (resendTimer > 0) return;
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      await sendEmailOtp(formData.email, formData.name);
-      setStatus('idle');
-      setResendTimer(30);
-    } catch (err) {
-      setStatus('error');
-      setErrorMessage(err.message || "Failed to resend code.");
-    }
-  };
-
-  const handleVerifyAndSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      if (!otp || otp.trim().length < 6) {
-        throw new Error("Please enter the 6-digit verification code.");
-      }
-
-      const verifyRes = await verifyEmailOtp(formData.email, otp.trim());
-
       const res = await submitEnquiry({
         ...formData,
         interestItem: "General Contact Page Inquiry",
         interestType: "Contact Page"
-      }, verifyRes.verifiedToken);
+      });
 
       setSubmitResult(res);
       setStep('success');
@@ -94,7 +48,7 @@ export default function ContactPage() {
       });
     } catch (err) {
       setStatus('error');
-      setErrorMessage(err.message || "Verification failed. Please check the code.");
+      setErrorMessage(err.message || "Failed to submit enquiry. Please try again.");
     }
   };
 
@@ -106,7 +60,6 @@ export default function ContactPage() {
       message: '',
       websiteUrl_hp: ''
     });
-    setOtp('');
     setStep('form');
     setStatus('idle');
     setSubmitResult(null);
@@ -228,7 +181,7 @@ export default function ContactPage() {
                 Let's Talk About Fabrics & Fashion
               </h3>
               <p className="text-xs sm:text-sm text-brand-charcoal/70 mt-1 font-light">
-                Fill in the details below and our team will get in touch with you promptly.
+                Fill in the details below and your enquiry will be sent directly to our showroom team.
               </p>
             </div>
 
@@ -239,16 +192,16 @@ export default function ContactPage() {
                   <CheckCircle className="w-10 h-10 stroke-[1.5]" />
                 </div>
                 <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">
-                  Verified Customer &bull; Email Confirmed
+                  Delivered Directly to Showroom
                 </span>
                 <h4 className="font-serif text-2xl text-brand-charcoal font-medium">
-                  Enquiry Successfully Verified
+                  Enquiry Sent Successfully
                 </h4>
                 <p className="text-sm text-brand-charcoal/80 max-w-sm mx-auto leading-relaxed">
                   Thank you, <strong className="font-medium">{formData.name}</strong>. Your enquiry has been delivered directly to our showroom team at <span className="text-brand-gold-dark font-medium">{companyInfo.email}</span>.
                 </p>
                 <p className="text-xs text-brand-muted">
-                  Our showroom representative will connect with you on your verified contact details within 24 business hours.
+                  Our showroom representative will connect with you on your contact details within 24 business hours.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
@@ -272,85 +225,9 @@ export default function ContactPage() {
               </div>
             )}
 
-            {/* STEP: OTP VERIFICATION */}
-            {step === 'otp' && (
-              <form onSubmit={handleVerifyAndSubmit} className="space-y-6 py-4">
-                <div className="text-center space-y-2">
-                  <div className="w-14 h-14 bg-brand-gold/15 text-brand-gold-dark rounded-full flex items-center justify-center mx-auto">
-                    <KeyRound className="w-7 h-7 stroke-[1.5]" />
-                  </div>
-                  <h4 className="font-serif text-2xl text-brand-charcoal font-medium">
-                    Enter Verification Code (OTP)
-                  </h4>
-                  <p className="text-xs sm:text-sm text-brand-charcoal/70 leading-relaxed max-w-md mx-auto">
-                    We've sent a 6-digit verification code to <strong className="text-brand-charcoal font-medium">{formData.email}</strong>. Please check your inbox or spam folder.
-                  </p>
-                </div>
-
-                {status === 'error' && (
-                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-sm flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
-                    <span>{errorMessage}</span>
-                  </div>
-                )}
-
-                <div className="text-center py-2">
-                  <input
-                    type="text"
-                    maxLength={6}
-                    required
-                    autoFocus
-                    placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                    className="w-56 text-center text-3xl tracking-[0.4em] font-mono py-3 px-4 bg-white border-2 border-brand-sand focus:border-brand-gold rounded-sm focus:outline-none transition-colors text-brand-charcoal font-bold shadow-inner"
-                  />
-                  <p className="text-xs text-brand-muted mt-2">Enter the 6-digit code</p>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading' || otp.length < 6}
-                  className="w-full py-3.5 bg-brand-charcoal hover:bg-brand-gold-dark text-brand-ivory text-xs uppercase tracking-[0.2em] font-semibold rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 cursor-pointer"
-                >
-                  {status === 'loading' ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Verifying Code...</span>
-                    </>
-                  ) : (
-                    <>
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Verify Code & Submit Enquiry</span>
-                    </>
-                  )}
-                </button>
-
-                <div className="flex items-center justify-between text-xs border-t border-brand-sand pt-4 text-brand-muted">
-                  <button
-                    type="button"
-                    onClick={() => { setStep('form'); setErrorMessage(''); }}
-                    className="text-brand-charcoal hover:text-brand-gold-dark transition-colors"
-                  >
-                    &larr; Change Details
-                  </button>
-
-                  <button
-                    type="button"
-                    disabled={resendTimer > 0 || status === 'loading'}
-                    onClick={handleResendOtp}
-                    className="flex items-center gap-1.5 text-brand-gold-dark hover:text-brand-charcoal transition-colors disabled:text-brand-muted cursor-pointer font-medium"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" />
-                    <span>{resendTimer > 0 ? `Resend code in ${resendTimer}s` : 'Resend Code'}</span>
-                  </button>
-                </div>
-              </form>
-            )}
-
             {/* STEP: FORM ENTRY */}
             {step === 'form' && (
-              <form onSubmit={handleRequestOtp} className="space-y-4">
+              <form onSubmit={handleSubmitEnquiry} className="space-y-4">
                 {/* Honeypot hidden input */}
                 <input
                   type="text"
@@ -376,6 +253,7 @@ export default function ContactPage() {
                   <input
                     type="text"
                     required
+                    placeholder="e.g. Priyanshu Sharma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -390,6 +268,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       required
+                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -403,6 +282,7 @@ export default function ContactPage() {
                     <input
                       type="email"
                       required
+                      placeholder="client@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -417,6 +297,7 @@ export default function ContactPage() {
                   <textarea
                     required
                     rows={4}
+                    placeholder="Tell us about your requirements, fabrics of interest, or showroom visit preferences..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full p-3.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal resize-none"
@@ -425,7 +306,7 @@ export default function ContactPage() {
 
                 <div className="flex items-center gap-2 text-[11px] text-brand-muted">
                   <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
-                  <span>Instant OTP verification ensures authentic client enquiries</span>
+                  <span>Enquiries are delivered directly to shubhamfabricsindia1@gmail.com</span>
                 </div>
 
                 <div className="pt-2">
@@ -437,12 +318,12 @@ export default function ContactPage() {
                     {status === 'loading' ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Sending Verification Code...</span>
+                        <span>Sending Enquiry to Showroom...</span>
                       </>
                     ) : (
                       <>
-                        <span>Send OTP & Verify Email</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <Send className="w-4 h-4" />
+                        <span>Submit Enquiry</span>
                       </>
                     )}
                   </button>

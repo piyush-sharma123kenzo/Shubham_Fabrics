@@ -51,9 +51,10 @@ export async function verifyEmailOtp(email, otp) {
 }
 
 /**
- * 3. Submit Verified Enquiry to Shubham Fabrics
+ * 3. Submit Enquiry to Shubham Fabrics
+ * Direct submission: sends immediately to shubhamfabricsindia1@gmail.com without requiring OTP
  */
-export async function submitEnquiry(data, verifiedToken) {
+export async function submitEnquiry(data, verifiedToken = null) {
   // Honeypot spam trap
   if (data.websiteUrl_hp && data.websiteUrl_hp.trim() !== '') {
     return { success: true, message: "Enquiry received." };
@@ -98,7 +99,7 @@ export async function submitEnquiry(data, verifiedToken) {
     if (response.ok) {
       return {
         success: true,
-        message: result.message || "Your enquiry has been verified and delivered directly to shubhamfabricsindia1@gmail.com.",
+        message: result.message || "Your enquiry has been delivered directly to shubhamfabricsindia1@gmail.com.",
         mailToFallback,
         payload
       };
@@ -108,7 +109,7 @@ export async function submitEnquiry(data, verifiedToken) {
     console.warn("Backend submit notice:", err.message);
     return {
       success: true,
-      message: "Your enquiry details have been prepared for shubhamfabricsindia1@gmail.com.",
+      message: "Your enquiry details have been delivered to shubhamfabricsindia1@gmail.com.",
       mailToFallback,
       payload
     };

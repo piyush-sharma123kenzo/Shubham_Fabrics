@@ -68,12 +68,11 @@ npm run dev
 
 ---
 
-## Enquiry & OTP Verification System
+## Direct Enquiry System
 
 - **Official Recipient Inbox**: `shubhamfabricsindia1@gmail.com`
-- **Customer Verification Flow**:
-  1. A customer enters their Name, Phone, Email, and requirements.
-  2. The website generates a secure 6-digit verification code (OTP) and emails it to the customer.
-  3. The customer enters the 6-digit code on the website to confirm their identity.
-  4. Once confirmed, the inquiry is verified and dispatched directly to `shubhamfabricsindia1@gmail.com` with a verified customer badge.
-  5. The customer can also click **"Open in Gmail / Mail App"** to send a direct copy from their personal email client.
+- **Customer Enquiry Flow**:
+  1. A customer enters their Name, Phone, Email, and requirements (or clicks "Enquire Now" on any product, fabric, or showroom button).
+  2. With normal clicking on **"Submit Enquiry"** (no OTP verification code required), the inquiry is dispatched directly to `shubhamfabricsindia1@gmail.com`.
+  3. The enquiry is also stored locally in `backend/data/enquiries.json` and session storage for persistent backup.
+  4. The customer can also click **"Open in Gmail / Mail App"** to send a direct copy from their personal email client.

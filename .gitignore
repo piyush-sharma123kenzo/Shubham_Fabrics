@@ -33,3 +33,6 @@ backend/.env
 *.njsproj
 *.sln
 *.sw?
+
+# Runtime data
+backend/data

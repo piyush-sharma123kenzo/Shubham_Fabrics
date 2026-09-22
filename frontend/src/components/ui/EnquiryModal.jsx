@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, AlertCircle, Loader2, Send, ShieldCheck, Mail, Phone, User, KeyRound, ArrowRight, RotateCcw } from 'lucide-react';
+import { X, CheckCircle, AlertCircle, Loader2, Send, ShieldCheck, Mail, Phone, User } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useEnquiry } from '../../context/EnquiryContext';
-import { sendEmailOtp, verifyEmailOtp, submitEnquiry } from '../../services/enquiryService';
+import { submitEnquiry } from '../../services/enquiryService';
 import { companyInfo } from '../../data/companyInfo';
 
 export default function EnquiryModal() {
@@ -16,11 +16,9 @@ export default function EnquiryModal() {
     websiteUrl_hp: '' // Honeypot field (hidden)
   });
 
-  const [otp, setOtp] = useState('');
-  const [step, setStep] = useState('form'); // 'form' | 'otp' | 'success'
+  const [step, setStep] = useState('form'); // 'form' | 'success'
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'error'
   const [errorMessage, setErrorMessage] = useState('');
-  const [resendTimer, setResendTimer] = useState(0);
   const [submitResult, setSubmitResult] = useState(null);
 
   // Sync enquiry context when opened
@@ -33,18 +31,9 @@ export default function EnquiryModal() {
       setStep('form');
       setStatus('idle');
       setErrorMessage('');
-      setOtp('');
       setSubmitResult(null);
     }
   }, [isEnquiryOpen, enquiryContext]);
-
-  // Resend countdown timer
-  useEffect(() => {
-    if (resendTimer > 0) {
-      const timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [resendTimer]);
 
   // Handle ESC key
   useEffect(() => {
@@ -59,8 +48,8 @@ export default function EnquiryModal() {
 
   if (!isEnquiryOpen) return null;
 
-  // Step 1: Validate Form and Send OTP
-  const handleRequestOtp = async (e) => {
+  // Direct Submission: No OTP verification required
+  const handleSubmitEnquiry = async (e) => {
     e.preventDefault();
     setStatus('loading');
     setErrorMessage('');
@@ -70,50 +59,11 @@ export default function EnquiryModal() {
         throw new Error("Please complete all required fields.");
       }
 
-      await sendEmailOtp(formData.email, formData.name);
-      setStep('otp');
-      setStatus('idle');
-      setResendTimer(30); // 30 second cooldown
-    } catch (err) {
-      setStatus('error');
-      setErrorMessage(err.message || "Failed to send verification code. Please check your email.");
-    }
-  };
-
-  // Step 2: Resend OTP
-  const handleResendOtp = async () => {
-    if (resendTimer > 0) return;
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      await sendEmailOtp(formData.email, formData.name);
-      setStatus('idle');
-      setResendTimer(30);
-    } catch (err) {
-      setStatus('error');
-      setErrorMessage(err.message || "Failed to resend code.");
-    }
-  };
-
-  // Step 3: Verify OTP and Submit Enquiry
-  const handleVerifyAndSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      if (!otp || otp.trim().length < 6) {
-        throw new Error("Please enter the complete 6-digit verification code.");
-      }
-
-      const verifyRes = await verifyEmailOtp(formData.email, otp.trim());
-
       const res = await submitEnquiry({
         ...formData,
         interestItem: enquiryContext.item,
         interestType: enquiryContext.type
-      }, verifyRes.verifiedToken);
+      });
 
       setSubmitResult(res);
       setStep('success');
@@ -126,7 +76,7 @@ export default function EnquiryModal() {
       });
     } catch (err) {
       setStatus('error');
-      setErrorMessage(err.message || "Verification failed. Please check the code.");
+      setErrorMessage(err.message || "Failed to submit enquiry. Please try again.");
     }
   };
 
@@ -138,7 +88,6 @@ export default function EnquiryModal() {
       message: '',
       websiteUrl_hp: ''
     });
-    setOtp('');
     setStep('form');
     setStatus('idle');
     setSubmitResult(null);
@@ -183,16 +132,16 @@ export default function EnquiryModal() {
                 <CheckCircle className="w-10 h-10 stroke-[1.5]" />
               </div>
               <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">
-                Email Verified &bull; Verified Customer
+                Delivered Directly to Showroom
               </span>
               <h4 className="font-serif text-2xl text-brand-charcoal font-medium">
-                Enquiry Successfully Verified
+                Enquiry Sent Successfully
               </h4>
               <p className="text-sm text-brand-charcoal/80 max-w-sm mx-auto leading-relaxed">
-                Thank you, <strong className="font-medium">{formData.name}</strong>. Your enquiry regarding <strong className="font-medium">{enquiryContext.item || 'our showroom pieces'}</strong> has been delivered directly to our team at <span className="text-brand-gold-dark font-medium">{companyInfo.email}</span>.
+                Thank you, <strong className="font-medium">{formData.name}</strong>. Your enquiry regarding <strong className="font-medium">{enquiryContext.item || 'our showroom collection'}</strong> has been sent directly to our team at <span className="text-brand-gold-dark font-medium">shubhamfabricsindia1@gmail.com</span>.
               </p>
               <p className="text-xs text-brand-muted">
-                Our representative will connect with you on your verified contact details within 24 business hours.
+                Our showroom team will connect with you on your contact details within 24 business hours.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 pt-3">
@@ -216,89 +165,9 @@ export default function EnquiryModal() {
             </div>
           )}
 
-          {/* STEP: OTP VERIFICATION */}
-          {step === 'otp' && (
-            <form onSubmit={handleVerifyAndSubmit} className="space-y-5">
-              <div className="text-center space-y-2">
-                <div className="w-12 h-12 bg-brand-gold/15 text-brand-gold-dark rounded-full flex items-center justify-center mx-auto">
-                  <KeyRound className="w-6 h-6 stroke-[1.5]" />
-                </div>
-                <h4 className="font-serif text-xl text-brand-charcoal font-medium">
-                  Enter Verification Code (OTP)
-                </h4>
-                <p className="text-xs text-brand-charcoal/70 leading-relaxed max-w-sm mx-auto">
-                  We've sent a 6-digit verification code to <strong className="text-brand-charcoal">{formData.email}</strong>. Please check your inbox or spam folder.
-                </p>
-              </div>
-
-              {/* Error Banner */}
-              {status === 'error' && (
-                <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-sm flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
-                  <span>{errorMessage}</span>
-                </div>
-              )}
-
-              {/* 6-Digit OTP Input */}
-              <div className="text-center py-2">
-                <input
-                  type="text"
-                  maxLength={6}
-                  required
-                  autoFocus
-                  placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                  className="w-48 text-center text-2xl tracking-[0.4em] font-mono py-2.5 px-3 bg-white border-2 border-brand-sand focus:border-brand-gold rounded-sm focus:outline-none transition-colors text-brand-charcoal font-bold"
-                />
-                <p className="text-[11px] text-brand-muted mt-2">Enter the 6-digit code</p>
-              </div>
-
-              {/* Submit CTA */}
-              <button
-                type="submit"
-                disabled={status === 'loading' || otp.length < 6}
-                className="w-full py-3 bg-brand-charcoal hover:bg-brand-gold-dark text-brand-ivory text-xs uppercase tracking-[0.2em] font-semibold rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 cursor-pointer"
-              >
-                {status === 'loading' ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Verifying Code...</span>
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle className="w-4 h-4" />
-                    <span>Verify Code & Submit Enquiry</span>
-                  </>
-                )}
-              </button>
-
-              {/* Resend & Back Row */}
-              <div className="flex items-center justify-between text-xs pt-1 text-brand-muted border-t border-brand-sand pt-3">
-                <button
-                  type="button"
-                  onClick={() => { setStep('form'); setErrorMessage(''); }}
-                  className="text-brand-charcoal hover:text-brand-gold-dark transition-colors"
-                >
-                  &larr; Change Details
-                </button>
-
-                <button
-                  type="button"
-                  disabled={resendTimer > 0 || status === 'loading'}
-                  onClick={handleResendOtp}
-                  className="flex items-center gap-1 text-brand-gold-dark hover:text-brand-charcoal transition-colors disabled:text-brand-muted cursor-pointer"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>{resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend Code'}</span>
-                </button>
-              </div>
-            </form>
-          )}
-
           {/* STEP: INITIAL FORM */}
           {step === 'form' && (
-            <form onSubmit={handleRequestOtp} className="space-y-4">
+            <form onSubmit={handleSubmitEnquiry} className="space-y-4">
               {/* Context Tag */}
               {enquiryContext.item && (
                 <div className="bg-brand-cream border border-brand-sand px-3.5 py-2.5 rounded-sm flex items-center justify-between text-xs">
@@ -345,6 +214,7 @@ export default function EnquiryModal() {
                   <input
                     type="text"
                     required
+                    placeholder="e.g. Priyanshu Sharma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full pl-9 pr-3 py-2 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -363,6 +233,7 @@ export default function EnquiryModal() {
                     <input
                       type="tel"
                       required
+                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full pl-9 pr-3 py-2 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -379,6 +250,7 @@ export default function EnquiryModal() {
                     <input
                       type="email"
                       required
+                      placeholder="client@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full pl-9 pr-3 py-2 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -396,6 +268,7 @@ export default function EnquiryModal() {
                   <textarea
                     required
                     rows={3}
+                    placeholder="Tell us what fabrics, patterns, or showroom services you are interested in..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full p-3 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal resize-none"
@@ -403,10 +276,10 @@ export default function EnquiryModal() {
                 </div>
               </div>
 
-              {/* Security Badge */}
+              {/* Security & Destination Notice */}
               <div className="flex items-center gap-2 text-[11px] text-brand-muted">
                 <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
-                <span>Instant OTP verification ensures genuine client enquiries</span>
+                <span>Enquiry will be sent directly to shubhamfabricsindia1@gmail.com</span>
               </div>
 
               {/* Submit CTA */}
@@ -414,17 +287,17 @@ export default function EnquiryModal() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full py-3 bg-brand-charcoal hover:bg-brand-gold-dark text-brand-ivory text-xs uppercase tracking-[0.2em] font-semibold rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-sm disabled:opacity-70 cursor-pointer"
+                  className="w-full py-3.5 bg-brand-charcoal hover:bg-brand-gold-dark text-brand-ivory text-xs uppercase tracking-[0.2em] font-semibold rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-sm disabled:opacity-70 cursor-pointer"
                 >
                   {status === 'loading' ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending Verification Code...</span>
+                      <span>Sending Enquiry to Showroom...</span>
                     </>
                   ) : (
                     <>
-                      <span>Send OTP & Verify Email</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <Send className="w-4 h-4" />
+                      <span>Submit Enquiry</span>
                     </>
                   )}
                 </button>
