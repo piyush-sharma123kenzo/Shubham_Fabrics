@@ -5,6 +5,8 @@ import SEO from '../components/ui/SEO';
 import SectionHeader from '../components/ui/SectionHeader';
 import { companyInfo } from '../data/companyInfo';
 import { useEnquiry } from '../context/EnquiryContext';
+import fabricSilkImg from '../assets/images/fabric_silk.jpg';
+import yellowSalwarImg from '../assets/images/yellow_salwar_suit.jpg';
 
 export default function AboutUsPage() {
   const { openEnquiry } = useEnquiry();
@@ -63,9 +65,14 @@ export default function AboutUsPage() {
                 <div className="p-2 sm:p-2.5 rounded-t-[90px] sm:rounded-t-[130px] rounded-b-sm border border-brand-gold/40 bg-white/70 shadow-lg backdrop-blur-xs transition-transform duration-500 group-hover:-translate-y-1">
                   <div className="aspect-[3/4] sm:aspect-[4/5] rounded-t-[80px] sm:rounded-t-[120px] rounded-b-xs overflow-hidden bg-brand-cream relative shadow-inner">
                     <img
-                      src="/fabric_silk.jpg"
+                      src={fabricSilkImg}
                       alt="Pure Silk Textiles at Shubham Fabrics"
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      onError={(e) => {
+                        if (e.currentTarget.src !== window.location.origin + '/fabric_silk.jpg') {
+                          e.currentTarget.src = '/fabric_silk.jpg';
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                     
@@ -87,9 +94,14 @@ export default function AboutUsPage() {
                 <div className="p-2 sm:p-2.5 rounded-t-[90px] sm:rounded-t-[130px] rounded-b-sm border border-brand-gold/50 bg-white/80 shadow-xl backdrop-blur-xs transition-transform duration-500 group-hover:-translate-y-1">
                   <div className="aspect-[3/4] sm:aspect-[4/5] rounded-t-[80px] sm:rounded-t-[120px] rounded-b-xs overflow-hidden bg-brand-cream relative shadow-inner">
                     <img
-                      src="/yellow_salwar_suit.jpg"
+                      src={yellowSalwarImg}
                       alt="Embroidered Yellow Punjabi Salwar Suit"
                       className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
+                      onError={(e) => {
+                        if (e.currentTarget.src !== window.location.origin + '/yellow_salwar_suit.jpg') {
+                          e.currentTarget.src = '/yellow_salwar_suit.jpg';
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                     

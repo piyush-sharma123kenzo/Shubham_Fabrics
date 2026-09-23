@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Mail, ArrowUpRight, ArrowRight, Send } from 'lucide-react';
 import { companyInfo } from '../../data/companyInfo';
 import { useEnquiry } from '../../context/EnquiryContext';
+import logoIconLight from '../../assets/images/logo_icon_light.png';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -32,9 +33,14 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <img
-                  src="/logo_icon_light.png"
+                  src={logoIconLight}
                   alt="Shubham Fabrics India Pvt Ltd"
                   className="h-12 w-auto object-contain"
+                  onError={(e) => {
+                    if (e.currentTarget.src !== window.location.origin + '/logo_icon_light.png') {
+                      e.currentTarget.src = '/logo_icon_light.png';
+                    }
+                  }}
                 />
                 <div>
                   <span className="font-serif tracking-[0.14em] text-xl sm:text-2xl font-bold uppercase block text-brand-ivory leading-tight">

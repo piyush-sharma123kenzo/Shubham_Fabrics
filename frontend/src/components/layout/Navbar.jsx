@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Search, Menu, X, ArrowRight, MapPin, Mail } from 'lucide-react';
 import { companyInfo } from '../../data/companyInfo';
 import { useEnquiry } from '../../context/EnquiryContext';
+import logoIconDark from '../../assets/images/logo_icon.png';
+import logoIconLight from '../../assets/images/logo_icon_light.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,9 +43,15 @@ export default function Navbar() {
             {/* Brand Logo with Official Transparent Emblem */}
             <Link to="/" className="group shrink-0 flex items-center gap-2.5 sm:gap-3 focus:outline-none">
               <img
-                src={isScrolled ? "/logo_icon.png" : "/logo_icon_light.png"}
+                src={isScrolled ? logoIconDark : logoIconLight}
                 alt="Shubham Fabrics India Pvt Ltd Logo"
                 className="h-9 sm:h-10 lg:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+                onError={(e) => {
+                  const fallback = isScrolled ? '/logo_icon.png' : '/logo_icon_light.png';
+                  if (e.currentTarget.src !== window.location.origin + fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
               />
               <div className="flex flex-col text-left">
                 <span className={`font-serif tracking-[0.14em] text-sm sm:text-base lg:text-lg font-semibold uppercase leading-tight whitespace-nowrap transition-colors ${
