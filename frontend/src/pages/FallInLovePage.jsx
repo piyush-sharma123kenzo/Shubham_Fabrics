@@ -5,6 +5,7 @@ import SEO from '../components/ui/SEO';
 import ProductCard from '../components/ui/ProductCard';
 import { productsData } from '../data/products';
 import { useEnquiry } from '../context/EnquiryContext';
+import whiteVioletDupattaImg from '../assets/images/white_violet_dupatta.jpg';
 
 export default function FallInLovePage() {
   const { openEnquiry } = useEnquiry();
@@ -17,31 +18,49 @@ export default function FallInLovePage() {
         description="Colours. Textures. Silhouettes. Discover pieces that turn ordinary moments into something unforgettable with Shubham Fabrics."
       />
 
-      {/* Signature Full-bleed Cinematic Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <img
-          src="/white_violet_dupatta.jpg"
-          alt="Fall in Love Editorial - Premium White and Violet Dupatta"
-          className="absolute inset-0 w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-brand-dark/30" />
+      {/* Signature Full-bleed Cinematic Hero — Full Body Presentation */}
+      <section className="relative w-full h-screen min-h-[700px] max-h-[1100px] flex flex-col justify-between overflow-hidden">
+        {/* Full Picture Layer */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={whiteVioletDupattaImg}
+            alt="Fall in Love Editorial - Premium White and Violet Dupatta"
+            className="w-full h-full object-cover object-top sm:object-center filter brightness-[0.95] contrast-[1.03]"
+            onError={(e) => {
+              if (e.currentTarget.src !== window.location.origin + '/white_violet_dupatta.jpg') {
+                e.currentTarget.src = '/white_violet_dupatta.jpg';
+              }
+            }}
+          />
+          {/* Subtle Top Scrim for Navbar Legibility */}
+          <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+          
+          {/* Soft Bottom Transition */}
+          <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent" />
+        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6">
-          <span className="text-xs uppercase tracking-[0.35em] font-semibold text-brand-gold-light animate-fade-in block">
-            SIGNATURE EDITORIAL
-          </span>
+        {/* Top Spacer for Fixed Navbar */}
+        <div className="pt-24" />
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-normal tracking-tight text-brand-ivory leading-tight">
-            Fall in Love
-          </h1>
+        {/* Editorial Text Placed Elegantly at Bottom to Leave Body & Outfit 100% Clear */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 pb-8 sm:pb-12 text-center mt-auto">
+          <div className="inline-block backdrop-blur-xs bg-black/30 px-6 sm:px-12 py-5 sm:py-6 rounded-sm border border-white/10 shadow-2xl">
+            <span className="text-xs uppercase tracking-[0.35em] font-semibold text-brand-gold-light animate-fade-in block mb-2 drop-shadow-md">
+              SIGNATURE EDITORIAL
+            </span>
 
-          <p className="text-lg sm:text-2xl font-editorial italic text-brand-ivory/90 max-w-2xl mx-auto">
-            Colours. Textures. Silhouettes.
-          </p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal tracking-tight text-brand-ivory leading-tight drop-shadow-md">
+              Fall in Love
+            </h1>
 
-          <p className="text-sm sm:text-base text-brand-ivory/75 max-w-xl mx-auto font-light leading-relaxed">
-            Discover pieces that turn ordinary moments into something unforgettable. A celebration of radiant palettes, cascading silks, and delicate embroidery.
-          </p>
+            <p className="text-base sm:text-xl font-editorial italic text-brand-ivory/95 mt-1 drop-shadow-md">
+              Colours. Textures. Silhouettes.
+            </p>
+
+            <p className="text-xs sm:text-sm text-brand-ivory/80 max-w-xl mx-auto font-light leading-relaxed mt-2 hidden sm:block drop-shadow-sm">
+              Discover pieces that turn ordinary moments into something unforgettable. A celebration of radiant palettes, cascading silks, and delicate embroidery.
+            </p>
+          </div>
         </div>
       </section>
 

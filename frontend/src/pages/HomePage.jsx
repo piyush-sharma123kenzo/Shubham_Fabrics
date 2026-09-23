@@ -11,6 +11,7 @@ import { fabricsData } from '../data/fabrics';
 import { clothingCategories } from '../data/categories';
 import { companyInfo } from '../data/companyInfo';
 import { useEnquiry } from '../context/EnquiryContext';
+import whiteVioletDupattaImg from '../assets/images/white_violet_dupatta.jpg';
 
 const heroSlides = [
   {
@@ -357,11 +358,16 @@ export default function HomePage() {
         {/* Full-bleed Fashion Photography Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/white_violet_dupatta.jpg"
+            src={whiteVioletDupattaImg}
             alt="Fall in Love Editorial - Premium White and Violet Dupatta"
-            className="w-full h-full object-cover object-top filter brightness-[0.75] contrast-[1.05]"
+            className="w-full h-full object-cover object-top sm:object-center filter brightness-[0.9] contrast-[1.03]"
+            onError={(e) => {
+              if (e.currentTarget.src !== window.location.origin + '/white_violet_dupatta.jpg') {
+                e.currentTarget.src = '/white_violet_dupatta.jpg';
+              }
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-brand-dark/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/50 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
