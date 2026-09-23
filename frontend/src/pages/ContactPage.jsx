@@ -253,7 +253,6 @@ export default function ContactPage() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Priyanshu Sharma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -268,7 +267,6 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"
@@ -282,7 +280,6 @@ export default function ContactPage() {
                     <input
                       type="email"
                       required
-                      placeholder="client@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2.5 text-sm bg-white border border-brand-sand rounded-sm focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-brand-charcoal"

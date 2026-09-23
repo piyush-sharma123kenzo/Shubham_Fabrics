@@ -36,22 +36,22 @@ export default function Navbar() {
             : 'bg-gradient-to-b from-black/40 via-black/20 to-transparent text-brand-ivory py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+          <div className="flex items-center justify-between gap-3 xl:gap-6">
             {/* Brand Logo with Official Transparent Emblem */}
-            <Link to="/" className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none">
+            <Link to="/" className="group shrink-0 flex items-center gap-2.5 sm:gap-3 focus:outline-none">
               <img
                 src={isScrolled ? "/logo_icon.png" : "/logo_icon_light.png"}
                 alt="Shubham Fabrics India Pvt Ltd Logo"
-                className="h-9 sm:h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-9 sm:h-10 lg:h-11 w-auto object-contain transition-transform group-hover:scale-105"
               />
               <div className="flex flex-col text-left">
-                <span className={`font-serif tracking-[0.14em] text-base sm:text-lg md:text-xl font-semibold uppercase leading-tight transition-colors ${
+                <span className={`font-serif tracking-[0.14em] text-sm sm:text-base lg:text-lg font-semibold uppercase leading-tight whitespace-nowrap transition-colors ${
                   isScrolled ? 'text-brand-charcoal group-hover:text-brand-gold-dark' : 'text-brand-ivory group-hover:text-brand-gold-light'
                 }`}>
                   Shubham Fabrics
                 </span>
-                <span className={`text-[8.5px] sm:text-[10px] tracking-[0.2em] uppercase font-medium leading-tight mt-0.5 transition-colors ${
+                <span className={`text-[8px] sm:text-[9px] tracking-[0.22em] uppercase font-medium leading-tight mt-0.5 whitespace-nowrap transition-colors ${
                   isScrolled ? 'text-brand-gold-dark' : 'text-brand-gold-light'
                 }`}>
                   India Pvt Ltd
@@ -59,27 +59,29 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-7">
+            {/* Desktop Navigation Links — Strictly Single Line & High Polish */}
+            <nav className="hidden lg:flex items-center justify-center gap-3 lg:gap-3.5 xl:gap-5 2xl:gap-7 flex-1 max-w-4xl mx-2">
               {companyInfo.navLinks.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`relative text-xs uppercase tracking-[0.2em] font-medium transition-all py-1.5 ${
+                    className={`group relative whitespace-nowrap shrink-0 text-[10.5px] lg:text-[11px] xl:text-xs uppercase tracking-[0.12em] lg:tracking-[0.14em] xl:tracking-[0.18em] font-medium transition-colors py-2 px-0.5 ${
                       isActive
                         ? isScrolled
                           ? 'text-brand-gold-dark font-semibold'
                           : 'text-brand-gold-light font-semibold'
                         : isScrolled
                         ? 'text-brand-charcoal/80 hover:text-brand-charcoal'
-                        : 'text-brand-ivory/90 hover:text-brand-ivory'
+                        : 'text-brand-ivory/90 hover:text-white'
                     }`}
                   >
                     {item.name}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-gold transition-all duration-300" />
+                    {isActive ? (
+                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-gold rounded-full transition-all duration-300" />
+                    ) : (
+                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center opacity-80" />
                     )}
                   </Link>
                 );
@@ -87,25 +89,25 @@ export default function Navbar() {
             </nav>
 
             {/* Utility Actions */}
-            <div className="flex items-center space-x-4 sm:space-x-5">
+            <div className="shrink-0 flex items-center space-x-2.5 sm:space-x-3.5 xl:space-x-4">
               <button
                 type="button"
                 onClick={openSearch}
                 aria-label="Search collections & fabrics"
-                className={`flex items-center gap-2 px-2.5 py-1.5 rounded-full transition-colors ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 rounded-full whitespace-nowrap transition-all ${
                   isScrolled
                     ? 'text-brand-charcoal/80 hover:text-brand-charcoal hover:bg-brand-sand/50'
                     : 'text-brand-ivory hover:text-brand-gold-light hover:bg-white/10'
                 }`}
               >
-                <Search className="w-4 h-4 stroke-[1.5]" />
-                <span className="text-[11px] uppercase tracking-[0.18em] font-medium">Search</span>
+                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] font-medium">Search</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => openEnquiry({ item: 'General Enquiry' })}
-                className={`hidden sm:inline-flex items-center text-[11px] uppercase tracking-[0.18em] font-medium px-4 py-2 rounded-full border transition-all ${
+                className={`hidden sm:inline-flex items-center text-[10px] sm:text-[11px] uppercase tracking-[0.16em] font-medium px-3.5 py-1.5 rounded-full border whitespace-nowrap transition-all ${
                   isScrolled
                     ? 'border-brand-charcoal/20 text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-ivory'
                     : 'border-white/40 text-brand-ivory hover:bg-white hover:text-brand-charcoal'
